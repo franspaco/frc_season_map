@@ -8,3 +8,8 @@ html, body {
 #map {
     height: 100%;
 }
+
+.map-toggle {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}

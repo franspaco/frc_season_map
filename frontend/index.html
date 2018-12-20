@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
         <script src="libs/jquery-3.3.1.min.js"></script>
+        <script src="libs/markerclusterer.js"></script>
 
         <link rel="stylesheet" href="css/main.css">
     </head>
@@ -38,6 +39,24 @@
                     <a class="mdl-navigation__link" href="">Link</a>
                     <a class="mdl-navigation__link" href="">Link</a>
                     <a class="mdl-navigation__link" href="">Link</a> -->
+                    <div class="map-toggle">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-teams">
+                            <input type="checkbox" id="switch-teams" class="mdl-switch__input" checked>
+                            <span class="mdl-switch__label">Teams</span>
+                        </label>
+                    </div>
+                    <div class="map-toggle">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-regionals">
+                            <input type="checkbox" id="switch-regionals" class="mdl-switch__input" checked>
+                            <span class="mdl-switch__label">Regionals</span>
+                        </label>
+                    </div>
+                    <!-- <div class="map-toggle">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-tba">
+                            <input type="checkbox" id="switch-tba" class="mdl-switch__input">
+                            <span class="mdl-switch__label">Click to TBA</span>
+                        </label>
+                    </div> -->
                 </nav>
             </div>
             <main class="mdl-layout__content">
