@@ -31,7 +31,7 @@ APP.tba_event = function(event){
 
 APP.init = async function(){
 
-    let data = await $.getJSON("/data/season_2019.json", () => {});
+    let data = await $.getJSON("data/season_2019.json", () => {});
     APP.data = data;
     // Make Regionals
     for (const key in data.events) {
