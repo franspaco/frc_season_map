@@ -1,6 +1,7 @@
 
 import requests, json, datetime
 from collections import defaultdict
+import jsonloader
 
 class TBAHelper:
     api = 'https://www.thebluealliance.com/api/v3'
@@ -14,19 +15,17 @@ class TBAHelper:
     
     def __load_cache(self, key):
         try:
-            with open(f"cache/{key}__cache.json", 'r', encoding='utf-8') as f:
-                return json.load(f)
+            return jsonloader.loadfile(f"cache/{key}__cache.json")
         except:
             return None
     
     def __save_cache(self, key, route, data, last_modified):
-        with open(f"cache/{key}__cache.json", 'w', encoding='utf-8') as f:
-            output = {
-                'route': route,
-                'last-modified': last_modified,
-                'data': data
-            }
-            json.dump(output,f)
+        output = {
+            'route': route,
+            'last-modified': last_modified,
+            'data': data
+        }
+        jsonloader.savefile(f"cache/{key}__cache.json", output)
 
     def __get_data(self, route):
         name = route.replace("/","_")
