@@ -18,10 +18,10 @@ def notNone(value):
 for data in teams:
     key = data['key']
     if key not in locations or locations[key]['lat'] is None or locations[key]['lng'] is None:
-        print(key)
+        # print(key)
         address = f"{notNone(data['city'])} {notNone(data['state_prov'])} {notNone(data['postal_code'])} {notNone(data['country'])}"
         if address == '' or address.isspace():
-            print('No address!')
+            # print('No address!')
             continue
         try:
             # print(address)
@@ -29,9 +29,9 @@ for data in teams:
             # print(loc)
             pos = loc[0]['geometry']['location']
             locations[key] = {'lat': pos['lat'], 'lng':pos['lng']}
-            print('Done!')
+            #print('Done!')
         except:
-            print('Error: ' + address)
+            print(key + '\nError: ' + address)
         break
         
 jsonloader.savefile('data/all_team_locations_2019.json', locations)

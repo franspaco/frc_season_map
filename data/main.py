@@ -1,9 +1,14 @@
+# FRC SEASON
+year = 2019
+
 import jsonloader
 import tbahelper
 import api_keys
-tba = tbahelper.TBAHelper(api_keys.tba_key, False)
 
-year = 2019
+# Run the other script
+import get_team_locations
+
+tba = tbahelper.TBAHelper(api_keys.tba_key, False)
 
 active_teams = tba.get_active_teams_year(year)
 
