@@ -48,6 +48,7 @@ APP.init = async function(){
                 map: this.map,
                 title: `${element.name} (${element.week})`
             });
+            APP.data.events[key].marker = marker;
             this.event_markers.push(marker);
             marker.addListener("click", () => {
                 APP.tba_event(key);
@@ -86,10 +87,16 @@ APP.init = async function(){
                 element.edges.forEach(item => {
                     item.setVisible(true);
                 });
+                element.events.forEach(item => {
+                    APP.data.events[item].marker.setAnimation(google.maps.Animation.BOUNCE);
+                });
             });
             marker.addListener("mouseout", () => {
                 element.edges.forEach(item => {
                     item.setVisible(false);
+                });
+                element.events.forEach(item => {
+                    APP.data.events[item].marker.setAnimation(null);
                 });
             });
             $(marker).mouseenter(()=>{
