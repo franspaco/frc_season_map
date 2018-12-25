@@ -86,7 +86,6 @@ APP.init = async function(){
                 element.edges.forEach(item => {
                     item.setVisible(true);
                 });
-                console.log('WOOP');
             });
             marker.addListener("mouseout", () => {
                 element.edges.forEach(item => {
