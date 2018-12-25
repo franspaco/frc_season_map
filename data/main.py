@@ -16,18 +16,20 @@ all_events = {item['key']:item for item in all_events}
 team_locations = jsonloader.loadfile('data/all_team_locations_2019.json')
 team_events = tba.get_team_events_year(year)
 
+team_data = dict()
+
 for team_key in active_teams:
+    team_data[team_key] = all_teams[team_key].copy()
+    team_data[team_key]['events'] = team_events[team_key]
     if team_key in team_locations:
-        all_teams[team_key]['lat'] = team_locations[team_key]['lat']
-        all_teams[team_key]['lng'] = team_locations[team_key]['lng']
-    all_teams[team_key]['events'] = team_events[team_key]
+        team_data[team_key].update(team_locations[team_key])
 
 for key,value in all_events.items():
     value['teams'] = tba.get_event_teams_keys(key)
 
 data = {
-    'teams': all_teams,
+    'teams': team_data,
     'events': all_events
 }
 
-jsonloader.savefile('data/season_2019.json', data)
+jsonloader.savefile('../docs/data/season_2019.json', data)
