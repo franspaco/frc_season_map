@@ -9,8 +9,7 @@
         <script src="mdl/material.min.js"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/brands.css" integrity="sha384-1KLgFVb/gHrlDGLFPgMbeedi6tQBLcWvyNUN+YKXbD7ZFbjX6BLpMDf0PJ32XJfX" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/fontawesome.css" integrity="sha384-jLuaxTTBR42U2qJ/pm4JRouHkEDHkVqH0T1nyQXn1mZ7Snycpf6Rl25VBNthU4z0" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
         <script src="libs/jquery-3.3.1.min.js"></script>
         <script src="libs/markerclusterer.js"></script>
@@ -24,7 +23,8 @@
             <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">FRC Teams 2019</span>
+                <span class="mdl-layout-title">FRC Teams <span class="year"></span></span>
+                <span id="subtitle"><a href="https://franspaco.com" target="_blank" class="mdl-navigation__link">Paco Huelsz</a></span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
@@ -38,7 +38,7 @@
             </div>
             </header>
             <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title"> <i class="material-icons">layers</i> Layers</span>
+            <span class="mdl-layout-title"> <i class="fas fa-layer-group"></i> Layers</span>
                 <nav class="mdl-navigation">
                     <!-- <a class="mdl-navigation__link" href="">Link</a>
                     <a class="mdl-navigation__link" href="">Link</a>
@@ -55,6 +55,20 @@
                             <input type="checkbox" id="switch-regionals" class="mdl-switch__input" checked>
                             <span class="mdl-switch__label">Events</span>
                         </label>
+                    </div>
+                    <div id="legend">
+                       <p>Legend:</p>
+                        <p>
+                            <div class="mini-box" id="l_0"> </div> 1992 - 1999 <br/>
+                            <div class="mini-box" id="l_1"> </div> 2000 - 2004 <br/>
+                            <div class="mini-box" id="l_2"> </div> 2005 - 2009 <br/>
+                            <div class="mini-box" id="l_3"> </div> 2010 - 2014 <br/>
+                            <div class="mini-box" id="l_4"> </div> 2015 - 2019 <br/>
+                            <div class="mini-box" id="l_5"> </div> 2020 - 2024 <br/>
+                            <div class="mini-box" id="l_rookie"> </div> Rookie (<span class="year"></span>) <br/>
+                            <div class="mini-box" id="l_event"> </div> Event <br/>
+                        </p>
+                        <p>Made with <i class="fas fa-heart love"></i> by <br> a FIRST volunteer.</p>
                     </div>
                     <!-- <div class="map-toggle">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-tba">
