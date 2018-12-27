@@ -6,6 +6,17 @@ let APP = {
     },
     team_markers: [],
     event_markers: [],
+    year: 2019,
+    legends: {
+        l_rookie: '#7C008F',
+        l_0: '#0000FF',
+        l_1: '#0033CC',
+        l_2: '#006699',
+        l_3: '#009966',
+        l_4: '#00CC33',
+        l_5: '#00FF00',
+        l_event: '#FF0000',
+    }
 };
 
 async function initMap() {
@@ -28,8 +39,37 @@ APP.tba_event = function(event){
     window.open("https://www.thebluealliance.com/event/" + event, '_blank');
 }
 
+APP.getMarker = function(rookie_year){
+    if(rookie_year === APP.year){
+        // #7C008F 
+        return 'markers/rookie.png'
+    }
+    switch(true){
+        case (rookie_year < 2000):
+            return 'markers/0.png'; // #0000FF
+        case (rookie_year < 2005):
+            return 'markers/1.png'; // #0033CC
+        case (rookie_year < 2010):
+            return 'markers/2.png'; // #006699
+        case (rookie_year < 2015):
+            return 'markers/3.png'; // #009966
+        case (rookie_year < 2020):
+            return 'markers/4.png'; // #00CC33
+        case (rookie_year < 2025):
+            return 'markers/5.png'; // #00FF00
+    }
+}
 
 APP.init = async function(){
+
+    // Set Year in UI
+    $('.year').text(APP.year.toString());
+
+    // Make legends
+    $('.mini-box').each((index, obj) => {
+        console.log($(obj));
+        $(obj).css({'background-color': APP.legends[$(obj).attr('id')]});
+    });
 
     let data = await $.getJSON("data/season_2019.json", () => {});
     APP.data = data;
@@ -75,7 +115,7 @@ APP.init = async function(){
                     lat: Number(element.lat),
                     lng: Number(element.lng)
                 },
-                icon: APP.markers.green,
+                icon: APP.getMarker(element.rookie_year),
                 map: this.map,
                 title: `${element.nickname} (${element.team_number})`
             });
