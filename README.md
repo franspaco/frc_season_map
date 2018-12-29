@@ -12,6 +12,9 @@ It basically feteches all teams and all events for the desired year and outputs 
 A Google Maps API key is required to get geolocations from the teams' addresses.
 A TBA api key is required to get team data.
 
+### Contributing & errors
+If a team is misplaced or missing and you have the correct location info feel free to submit and issue with the correct data. (and preferably some statement of affiliation to corroborate the info)
+
 ### Setup
 To use the data collector, create the file `data/api_keys.py` and save it with the contents:
 ```python

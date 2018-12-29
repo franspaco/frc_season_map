@@ -13,3 +13,31 @@ html, body {
     margin-left: 20px;
     margin-bottom: 15px;
 }
+
+.love {
+    color: #C62828
+}
+
+.mini-box{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+}
+
+#legend {
+    margin-left: 15px;
+}
+
+#legend > p:first-child {
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#subtitle {
+    padding-top: 10px;
+    margin-left: 10px;
+}
+#subtitle a {
+    font-size: 0.7em;
+}
