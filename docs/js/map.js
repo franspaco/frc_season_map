@@ -16,7 +16,8 @@ let APP = {
         l_4: '#00CC33',
         l_5: '#00FF00',
         l_event: '#FF0000',
-    }
+    },
+    infowindow: null,
 };
 
 async function initMap() {
@@ -60,14 +61,31 @@ APP.getMarker = function(rookie_year){
     }
 }
 
+APP.makeEventInfoWindow = function(data){
+    this.infowindow.close();
+    this.infowindow.setContent(`
+        <div class="infowindow">
+            <h3>${data.name}</h3>
+            <p>Week: ${data.week}</p>
+        </div>
+    `);
+    this.infowindow.open(this.map, data.marker);
+}.bind(APP);
+
+APP.makeTeamInfoWindow = function(data){
+    this.infowindow.close();
+    this.infowindow.open(this.map, data.marker);
+}.bind(APP);
+
 APP.init = async function(){
+
+    this.infowindow = new google.maps.InfoWindow();
 
     // Set Year in UI
     $('.year').text(APP.year.toString());
 
     // Make legends
     $('.mini-box').each((index, obj) => {
-        console.log($(obj));
         $(obj).css({'background-color': APP.legends[$(obj).attr('id')]});
     });
 
@@ -88,9 +106,13 @@ APP.init = async function(){
                 map: this.map,
                 title: `${element.name} (${element.week})`
             });
+            element.marker = marker;
             this.event_markers.push(marker);
-            marker.addListener("click", () => {
+            marker.addListener("click", (event) => {
                 APP.tba_event(key);
+            });
+            marker.addListener("rightclick", (event) => {
+                APP.makeEventInfoWindow(element);
             });
             marker.addListener("mouseover", () => {
                 element.edges.forEach(item => {
@@ -119,8 +141,13 @@ APP.init = async function(){
                 map: this.map,
                 title: `${element.nickname} (${element.team_number})`
             });
+            element.marker = marker;
+            this.team_markers.push(marker);
             marker.addListener("click", () => {
                 APP.tba_team(element.team_number);
+            });
+            marker.addListener("rightclick", (event) => {
+                APP.makeTeamInfoWindow(element);
             });
             marker.addListener("mouseover", () => {
                 element.edges.forEach(item => {
@@ -135,8 +162,6 @@ APP.init = async function(){
             $(marker).mouseenter(()=>{
                 console.log('ENTER');
             });
-            element.marker = marker;
-            this.team_markers.push(marker);
         }
     }
 
