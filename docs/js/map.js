@@ -26,9 +26,10 @@ async function initMap() {
     };
     APP.map = new google.maps.Map(document.getElementById('map'), {
         zoom: 4,
-        center: center
+        center: center,
+        mapTypeControl: false,
+        streetViewControl: false,
     });
-    APP.snackbarContainer = document.querySelector('#search-toast');
     APP.init();
 }
 
@@ -62,6 +63,8 @@ APP.getMarker = function(rookie_year){
 }
 
 APP.init = async function(){
+    // Get snackbar object
+    APP.snackbarContainer = document.querySelector('#search-toast');
 
     // Set Year in UI
     $('.year').text(APP.year.toString());
