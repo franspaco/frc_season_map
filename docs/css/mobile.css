@@ -1,0 +1,8 @@
+@media all and (max-width: 481px) {
+    .mdl-layout-title {
+        font-size: 1em;
+    }
+    .mdl-layout__header-row{
+        padding-left: 55px;
+    }
+}
