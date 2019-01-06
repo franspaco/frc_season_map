@@ -73,6 +73,21 @@ APP.init = async function(){
 
     let data = await $.getJSON("data/season_2019.json", () => {});
     APP.data = data;
+
+    await $.getScript("https://firstmap.github.io/data/custom_locations.js", ()=>{});
+
+    for (const key in locations) {
+        if (locations.hasOwnProperty(key)) {
+            const element = locations[key];
+            let data_key = "frc" + String(key);
+            if(data.teams.hasOwnProperty(data_key)){
+                data.teams[data_key].lat = element.lat;
+                data.teams[data_key].lng = element.lng;
+                console.log("Updated: " + data_key);
+            }
+        }
+    }
+
     // Make Regionals
     for (const key in data.events) {
         if (data.events.hasOwnProperty(key)) {
