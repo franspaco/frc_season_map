@@ -41,3 +41,11 @@ html, body {
 #subtitle a {
     font-size: 0.7em;
 }
+
+#search-bar {
+    margin-left: 20px;
+}
+
+#search-bar .mdl-textfield__label {
+    color: rgba(255,255,255,.6)
+}

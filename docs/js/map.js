@@ -28,6 +28,7 @@ async function initMap() {
         zoom: 4,
         center: center
     });
+    APP.snackbarContainer = document.querySelector('#search-toast');
     APP.init();
 }
 
@@ -195,11 +196,27 @@ APP.init = async function(){
         tba: $('#switch-tba')
     }
 
+    // Team toggle listener
     this.toggles.teams.change(function() {
         APP.toggle_markers(APP.team_markers, this.checked);
     });
+    // Event toggle listener
     this.toggles.events.change(function() {
         APP.toggle_markers(APP.event_markers, this.checked);
+    });
+
+    // Search listener
+    $("#search-bar").on("submit", (e)=>{
+        e.preventDefault();
+        let number = $('#search-field').val();
+        let key = 'frc' + number;
+        if(APP.data.teams.hasOwnProperty(key)){
+            APP.map.setCenter(APP.data.teams[key].marker.position);
+            APP.map.setZoom(14);
+        }else{
+            var data = {message: "Could not find team " + number};
+            APP.snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        }
     });
 }.bind(APP);
 
