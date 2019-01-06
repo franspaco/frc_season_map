@@ -34,6 +34,13 @@
             <div class="mdl-layout__header-row">
                 <!-- Title -->
                 <span class="mdl-layout-title">FRC Teams <span class="year"></span></span>
+                <form id="search-bar">
+                    <i class="fas fa-search-location"></i>
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="search-field">
+                        <label class="mdl-textfield__label" for="search-field">Search number</label>
+                    </div>
+                </form>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
@@ -91,6 +98,10 @@
             <div class="page-content"><!-- Your content goes here --></div>
             </main>
             <div id="map"></div>
+        </div>
+        <div id="search-toast" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
         </div>
     </body>
     <script src="js/map.js"></script>
