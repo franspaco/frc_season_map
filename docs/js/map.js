@@ -68,7 +68,7 @@ APP.init = async function(){
 
     // Make legends
     $('.mini-box').each((index, obj) => {
-        console.log($(obj));
+        // console.log($(obj));
         $(obj).css({'background-color': APP.legends[$(obj).attr('id')]});
     });
 
@@ -84,7 +84,7 @@ APP.init = async function(){
             if(data.teams.hasOwnProperty(data_key)){
                 data.teams[data_key].lat = element.lat;
                 data.teams[data_key].lng = element.lng;
-                console.log("Updated: " + data_key);
+                // console.log("Updated: " + data_key);
             }
         }
     }
@@ -147,9 +147,6 @@ APP.init = async function(){
                 element.edges.forEach(item => {
                     item.setVisible(false);
                 });
-            });
-            $(marker).mouseenter(()=>{
-                console.log('ENTER');
             });
             element.marker = marker;
             this.team_markers.push(marker);
