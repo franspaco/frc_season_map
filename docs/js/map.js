@@ -123,11 +123,15 @@ APP.init = async function(){
             });
         }
     }
-
+    APP.team_autocomplete = [];
     // Make Teams
     for (const key in data.teams) {
         if (data.teams.hasOwnProperty(key)) {
             const element = data.teams[key];
+            APP.team_autocomplete.push({
+                value: key,
+                label: `${element.team_number} | ${element.nickname}`
+            });
             element.edges = [];
             var marker = new google.maps.Marker({
                 position: {
@@ -205,19 +209,44 @@ APP.init = async function(){
         APP.toggle_markers(APP.event_markers, this.checked);
     });
 
+    this.goto = function(key){
+        if(APP.data.teams.hasOwnProperty(key)){
+            APP.map.setCenter(APP.data.teams[key].marker.position);
+            APP.map.setZoom(14);
+            var data = {message: `${APP.data.teams[key].team_number} | ${APP.data.teams[key].nickname}`};
+            APP.snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        }else{
+            var data = {message: "Could not find team " + key.substring(3)};
+            APP.snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        }
+    }
+
     // Search listener
     $("#search-bar").on("submit", (e)=>{
         e.preventDefault();
         let number = $('#search-field').val();
         let key = 'frc' + number;
-        if(APP.data.teams.hasOwnProperty(key)){
-            APP.map.setCenter(APP.data.teams[key].marker.position);
-            APP.map.setZoom(14);
-        }else{
-            var data = {message: "Could not find team " + number};
-            APP.snackbarContainer.MaterialSnackbar.showSnackbar(data);
+        APP.goto(key);
+    });
+    $("#search-field").autocomplete({
+        // source: APP.team_autocomplete,
+        source: function(request, response) {
+            var results = $.ui.autocomplete.filter(APP.team_autocomplete, request.term);
+            response(results.slice(0, 10));
+        },
+        focus: function( event, ui ) {
+            $( "#search-field" ).val( ui.item.label );
+            return false;
+        },
+        select: (event, ui) => {
+            event.preventDefault();
+            $("#search-field").val(ui.item.label);
+            // $("#search-field").val("");
+            APP.goto(ui.item.value);
+            return false;
         }
     });
+    $(".ui-menu").addClass("mdl-card mdl-shadow--2dp");
 }.bind(APP);
 
 
