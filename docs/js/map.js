@@ -78,7 +78,7 @@ APP.init = async function(){
     let data = await $.getJSON("data/season_2019.json", () => {});
     APP.data = data;
 
-    await $.getScript("https://firstmap.github.io/data/custom_locations.js", ()=>{});
+    let locations = await $.getJSON('https://firstmap.github.io/data/custom_locations.json');
 
     for (const key in locations) {
         if (locations.hasOwnProperty(key)) {
