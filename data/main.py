@@ -1,12 +1,17 @@
 # FRC SEASON
-year = 2019
 
 import jsonloader
 import tbahelper
 import api_keys
+import settings
+
+year = settings.year
 
 # Run the other script
 import get_team_locations
+
+# Edit params to adjust desired source
+get_team_locations.populate_data_file(year, year)
 
 tba = tbahelper.TBAHelper(api_keys.tba_key, False)
 
@@ -18,7 +23,7 @@ all_teams = {item['key']:item for item in all_teams}
 all_events = tba.get_events_year(year)
 all_events = {item['key']:item for item in all_events}
 
-team_locations = jsonloader.loadfile('data/all_team_locations_2019.json')
+team_locations = jsonloader.loadfile(f"data/all_team_locations_{year}.json")
 team_events = tba.get_team_events_year(year)
 
 team_data = dict()
@@ -37,4 +42,4 @@ data = {
     'events': all_events
 }
 
-jsonloader.savefile('../docs/data/season_2019.json', data)
+jsonloader.savefile(f"../docs/data/season_{year}.json", data)
