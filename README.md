@@ -1,6 +1,6 @@
 # FIRST Robotics Challenge (FRC) Season Map
 
-_Updated for 2019_
+_Updated for 2020_
 
 [CLICK HERE TO VIEW](https://franspaco.github.io/frc_season_map/)
 
