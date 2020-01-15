@@ -6,7 +6,7 @@ let APP = {
     },
     team_markers: [],
     event_markers: [],
-    year: 2019,
+    year: new Date().getFullYear(),
     legends: {
         l_rookie: '#7C008F',
         l_0: '#0000FF',
@@ -66,6 +66,15 @@ APP.init = async function(){
     // Get snackbar object
     APP.snackbarContainer = document.querySelector('#search-toast');
 
+    let query_data = parse_query();
+
+    if (query_data.hasOwnProperty("year")){
+        let year = parseInt(query_data["year"]);
+        if(!isNaN(year)){
+            APP.year = year;
+        }
+    }
+
     // Set Year in UI
     $('.year').text(APP.year.toString());
 
@@ -75,7 +84,7 @@ APP.init = async function(){
         $(obj).css({'background-color': APP.legends[$(obj).attr('id')]});
     });
 
-    let data = await $.getJSON("data/season_2019.json", () => {});
+    let data = await $.getJSON(`data/season_${APP.year}.json`, () => {});
     APP.data = data;
 
     let locations = await $.getJSON('https://firstmap.github.io/data/custom_locations.json');
@@ -105,7 +114,7 @@ APP.init = async function(){
                 },
                 icon: APP.markers.red,
                 map: this.map,
-                title: `${element.name} (${element.week})`
+                title: `${element.name} (${element.week+1})`
             });
             this.event_markers.push(marker);
             marker.addListener("click", () => {
@@ -255,3 +264,14 @@ APP.toggle_markers = function(array, value){
         element.setVisible(value);
     });
 }.bind(APP);
+
+function parse_query(){
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    let data = {};
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        data[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return data;
+}
