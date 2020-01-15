@@ -78,6 +78,8 @@ APP.init = async function(){
     // Set Year in UI
     $('.year').text(APP.year.toString());
 
+    document.title = `FRC Map ${APP.year.toString()}`;
+
     // Make legends
     $('.mini-box').each((index, obj) => {
         // console.log($(obj));
