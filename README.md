@@ -16,7 +16,7 @@ A TBA api key is required to get team data.
 If a team is misplaced or missing and you have the correct location info feel free to submit an issue with the correct data. (and preferably some statement of affiliation to corroborate the info)
 
 ### Contribution
-I'm open to suggestions and contributions! Let me know if you have 
+I'm open to suggestions and contributions! Let me know if you have any ideas to make this better.
 
 ### Setup
 To use the data collector, create the file `data/api_keys.py` and save it with the contents:
