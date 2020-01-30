@@ -2,7 +2,7 @@
 
 _Updated for 2020_
 
-[CLICK HERE TO VIEW](frcmap.com)
+[CLICK HERE TO VIEW](http://frcmap.com)
 
 This map shows all FRC teams and events registered for the current season.
 
