@@ -2,7 +2,7 @@
 
 _Updated for 2020_
 
-[CLICK HERE TO VIEW](https://franspaco.github.io/frc_season_map/)
+[CLICK HERE TO VIEW](frcmap.com)
 
 This map shows all FRC teams and events registered for the current season.
 
