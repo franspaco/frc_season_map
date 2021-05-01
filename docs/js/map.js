@@ -6,7 +6,7 @@ let APP = {
     },
     team_markers: [],
     event_markers: [],
-    year: new Date().getFullYear(),
+    year: 2020,
     legends: {
         l_rookie: '#7C008F',
         l_0: '#0000FF',
