@@ -1,8 +1,8 @@
 # FIRST Robotics Challenge (FRC) Season Map
 
-_Updated for 2020_
+_Updated for 2022_
 
-[CLICK HERE TO VIEW](http://frcmap.com)
+[CLICK HERE TO VIEW ON frcmap.com](http://frcmap.com)
 
 This map shows all FRC teams and events registered for the current season.
 
