@@ -28,13 +28,16 @@ class TBAHelper:
         jsonloader.savefile(f"cache/{key}__cache.json", output)
 
     def __get_data(self, route):
+        print(f"[TBA] Querying: '{route}' ... ", end='')
         name = route.replace("/","_")
         if name in self.memory:
+            print("MEMORY!")
             return self.memory[name]
         header = self.headers.copy()
         cache = self.__load_cache(name)
         if cache is not None and not self.check_update:
             self.memory[name] = cache['data']
+            print("CACHE!")
             return self.memory[name]
         if cache is not None and route == cache['route']:
             header['If-Modified-Since'] = cache['last-modified']
@@ -45,7 +48,9 @@ class TBAHelper:
             self.memory[name] = r.json()
             self.__save_cache(name, route, self.memory[name], r.headers['Last-Modified'])
         else:
-            raise Exception('Query error!\n' + str(r.status_code))
+            print(f"Error: {route}")
+            raise Exception(f"Query error!\n{r.status_code}\n{r.text}")
+        print("TBA!")
         return self.memory[name]
 
 

@@ -6,7 +6,7 @@ let APP = {
     },
     team_markers: [],
     event_markers: [],
-    year: 2020,
+    year: 2022,
     legends: {
         l_rookie: '#7C008F',
         l_0: '#0000FF',
@@ -16,7 +16,12 @@ let APP = {
         l_4: '#00CC33',
         l_5: '#00FF00',
         l_event: '#FF0000',
-    }
+    },
+    records: [
+        2022,
+        2020,
+        2019
+    ]
 };
 
 async function initMap() {
@@ -84,6 +89,11 @@ APP.init = async function(){
     $('.mini-box').each((index, obj) => {
         // console.log($(obj));
         $(obj).css({'background-color': APP.legends[$(obj).attr('id')]});
+    });
+
+    APP.records.forEach(element => {
+        $('#years').append(`<li><a href="?year=${element}">${element}</a></li>`);
+        console.log(`Append: ${element}`);
     });
 
     let data = await $.getJSON(`data/season_${APP.year}.json`, () => {});

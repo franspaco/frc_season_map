@@ -24,11 +24,11 @@ html, body {
     display: inline-block;
 }
 
-#legend {
+.side-section {
     margin-left: 15px;
 }
 
-#legend > p:first-child {
+.side-section > p:first-child {
     font-size: 1.5em;
     margin-top: 15px;
     margin-bottom: 5px;
