@@ -93,7 +93,6 @@ APP.init = async function(){
 
     APP.records.forEach(element => {
         $('#years').append(`<li><a href="?year=${element}">${element}</a></li>`);
-        console.log(`Append: ${element}`);
     });
 
     let data = await $.getJSON(`data/season_${APP.year}.json`, () => {});
@@ -126,7 +125,7 @@ APP.init = async function(){
                 },
                 icon: APP.markers.red,
                 map: this.map,
-                title: `${element.name} (${element.week+1})`
+                title: `${element.name} (week ${element.week+1})`
             });
             this.event_markers.push(marker);
             marker.addListener("click", () => {

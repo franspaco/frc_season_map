@@ -14,9 +14,9 @@ def tup(item):
     return (item["lat"], item["lng"])
 
 
-def randomnize_location(team_location, sigma=0.01):
-    team_location["lat"] = random.gauss(team_location["lat"], sigma)
-    team_location["lng"] = random.gauss(team_location["lng"], sigma)
+def randomnize_location(data, sigma=0.01):
+    data["lat"] = random.gauss(data["lat"], sigma)
+    data["lng"] = random.gauss(data["lng"], sigma)
 
 
 def extract_year_form_file(filename):
@@ -38,7 +38,10 @@ def get_last_year_with_data(last=None):
 
     return years[-1]
 
-def populate_data_file(tba, gmaps, year=None, randomnize_overlaps=True):
+def make_team_address(data):
+    return f"{notNone(data['city'])} {notNone(data['state_prov'])} {notNone(data['postal_code'])} {notNone(data['country'])}"
+
+def get_teams_locations(tba, gmaps, year=None, overrides={}, randomnize_overlaps=True):
     print(f"[LOC] Populating data for {year}")
     last = get_last_year_with_data(year)
 
@@ -47,6 +50,8 @@ def populate_data_file(tba, gmaps, year=None, randomnize_overlaps=True):
         locations = jsonloader.loadfile(f"data/all_team_locations_{last}.json")
     else:
         locations = {}
+
+    locations.update(overrides)
 
     teams = tba.get_teams()
     print(f"[LOC] TEAMS {len(teams)}")
@@ -60,7 +65,7 @@ def populate_data_file(tba, gmaps, year=None, randomnize_overlaps=True):
         key = data['key']
         if key not in locations or locations[key]['lat'] is None or locations[key]['lng'] is None:
             print(f"[LOC] Looking for: {key}")
-            address = f"{notNone(data['city'])} {notNone(data['state_prov'])} {notNone(data['postal_code'])} {notNone(data['country'])}"
+            address = make_team_address(data)
             if address == '' or address.isspace():
                 print('[LOC] No address!')
                 continue
@@ -93,3 +98,19 @@ def populate_data_file(tba, gmaps, year=None, randomnize_overlaps=True):
         exit(-1)
     
     return locations
+
+
+def process_event_locations(all_events, overrides):
+    # To avoid location overlaps keep tabs on all unique locations
+    ulocs = set()
+    for key, data in all_events.items():
+        if key in overrides:
+            data.update(overrides[key])
+            continue
+        loc = (data['lat'], data['lng'])
+        if loc in ulocs:
+            print(f"[LOC] Randomnizing event: {key}")
+            randomnize_location(data, 0.01)
+        ulocs.add(loc)
+
+

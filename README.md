@@ -13,7 +13,9 @@ A Google Maps API key is required to get geolocations from the teams' addresses.
 A TBA api key is required to get team data.
 
 ### Placement Errors
-If a team is misplaced or missing and you have the correct location info feel free to submit an issue with the correct data. (and preferably some statement of affiliation to corroborate the info)
+If a team is misplaced or missing and you have the correct location info please submit an issue with the correct data. (and preferably some statement of affiliation to corroborate the info)
+
+You can also submit a pull request adding your team's correct location in `data/locations/teams.toml`. 
 
 ### Contribution
 I'm open to suggestions and contributions! Let me know if you have any ideas to make this better.
