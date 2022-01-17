@@ -1,0 +1,13 @@
+{
+    "include": [
+        "libs/*",
+        "js/*"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jquery",
+            "maps"
+        ]
+    }
+
+}

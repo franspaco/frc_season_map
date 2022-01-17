@@ -82,63 +82,60 @@
             </div>
             </header>
             <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title"> <i class="fas fa-layer-group"></i> Layers</span>
-                <nav class="mdl-navigation">
-                    <!-- <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a> -->
-                    <div class="map-toggle">
-                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-teams">
-                            <input type="checkbox" id="switch-teams" class="mdl-switch__input" checked>
-                            <span class="mdl-switch__label">Teams</span>
-                        </label>
+                <span class="mdl-layout-title"> <i class="fas fa-layer-group"></i> Layers</span>
+                    <nav class="mdl-navigation">
+                        <!-- <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a>
+                        <a class="mdl-navigation__link" href="">Link</a> -->
+                        <div class="map-toggle">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-teams">
+                                <input type="checkbox" id="switch-teams" class="mdl-switch__input" checked>
+                                <span class="mdl-switch__label">Teams</span>
+                            </label>
+                        </div>
+                        <div class="map-toggle">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-regionals">
+                                <input type="checkbox" id="switch-regionals" class="mdl-switch__input" checked>
+                                <span class="mdl-switch__label">Events</span>
+                            </label>
+                        </div>
+                        <div class="side-section">
+                        <p>Usage:</p>
+                        <p class="desktop">Hover to see connections, click to open TBA page.</p>
+                        <p class="mobile">Click to see connections, double-click to open TBA page.</p>
+                        </div>
+                        <div class="side-section">
+                        <p>Legend:</p>
+                            <p>
+                                <div class="mini-box" id="l_0"> </div> 1992 - 1999 <br/>
+                                <div class="mini-box" id="l_1"> </div> 2000 - 2004 <br/>
+                                <div class="mini-box" id="l_2"> </div> 2005 - 2009 <br/>
+                                <div class="mini-box" id="l_3"> </div> 2010 - 2014 <br/>
+                                <div class="mini-box" id="l_4"> </div> 2015 - 2019 <br/>
+                                <div class="mini-box" id="l_5"> </div> 2020 - 2024 <br/>
+                                <div class="mini-box" id="l_rookie"> </div> Rookie (<span class="year"></span>) <br/>
+                                <div class="mini-box" id="l_event"> </div> Event <br/>
+                            </p>
+                            <p>Made with <i class="fas fa-heart love"></i> by <br> a FIRST volunteer.</p>
+                            <p>
+                                Please submit a github issue if your team is shown in an incorrect location :)
+                            </p>
+                            <a class="mdl-navigation__link" href="https://github.com/franspaco/frc_season_map" target="_blank"> <i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                        <div class="side-section">
+                        <p>Other Years:</p>
+                        <ul id="years"></ul>
                     </div>
-                    <div class="map-toggle">
-                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-regionals">
-                            <input type="checkbox" id="switch-regionals" class="mdl-switch__input" checked>
-                            <span class="mdl-switch__label">Events</span>
-                        </label>
-                    </div>
-                    <div class="side-section">
-                       <p>Usage:</p>
-                       <p class="desktop">Hover to see connections, click to open TBA page.</p>
-                       <p class="mobile">Click to see connections, double-click to open TBA page.</p>
-                    </div>
-                    <div class="side-section">
-                       <p>Legend:</p>
-                        <p>
-                            <div class="mini-box" id="l_0"> </div> 1992 - 1999 <br/>
-                            <div class="mini-box" id="l_1"> </div> 2000 - 2004 <br/>
-                            <div class="mini-box" id="l_2"> </div> 2005 - 2009 <br/>
-                            <div class="mini-box" id="l_3"> </div> 2010 - 2014 <br/>
-                            <div class="mini-box" id="l_4"> </div> 2015 - 2019 <br/>
-                            <div class="mini-box" id="l_5"> </div> 2020 - 2024 <br/>
-                            <div class="mini-box" id="l_rookie"> </div> Rookie (<span class="year"></span>) <br/>
-                            <div class="mini-box" id="l_event"> </div> Event <br/>
-                        </p>
-                        <p>Made with <i class="fas fa-heart love"></i> by <br> a FIRST volunteer.</p>
-                        <p>
-                            Please submit a github issue if your team is shown in an incorrect location :)
-                        </p>
-                        <a class="mdl-navigation__link" href="https://github.com/franspaco/frc_season_map" target="_blank"> <i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                    <div class="side-section">
-                       <p>Other Years:</p>
-                       <ul id="years"></ul>
-                    </div>
-                    <!-- <div class="map-toggle">
-                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-tba">
-                            <input type="checkbox" id="switch-tba" class="mdl-switch__input">
-                            <span class="mdl-switch__label">Click to TBA</span>
-                        </label>
-                    </div> -->
                 </nav>
             </div>
             <main class="mdl-layout__content">
-            <div class="page-content"><!-- Your content goes here --></div>
+                <div class="page-content"><!-- Your content goes here --></div>
             </main>
             <div id="map"></div>
+            <div class="no-show" id="team-markers">
+                <div id="lol">Woop</div>
+            </div>
         </div>
         <div id="search-toast" class="mdl-js-snackbar mdl-snackbar">
             <div class="mdl-snackbar__text"></div>

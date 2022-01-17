@@ -31,6 +31,69 @@ async function initMap() {
         mapTypeControl: false,
         streetViewControl: false,
     });
+
+    APP.Popup = class Popup extends google.maps.OverlayView {
+        position;
+        containerDiv;
+        constructor(position, text, color) {
+            super();
+            this.position = position;
+            let content = document.createElement("div");
+
+            $(content).text(text);
+
+            content.classList.add("popup-bubble");
+            $(content).css("color", "white");
+            $(content).css("background-color", color);
+
+            // This zero-height div is positioned at the bottom of the bubble.
+            const bubbleAnchor = document.createElement("div");
+
+            $(bubbleAnchor).css("background-color", color);
+
+            bubbleAnchor.classList.add("popup-bubble-anchor");
+            bubbleAnchor.appendChild(content);
+            // This zero-height div is positioned at the bottom of the tip.
+            this.containerDiv = document.createElement("div");
+            this.containerDiv.classList.add("popup-container");
+            this.containerDiv.appendChild(bubbleAnchor);
+            // Optionally stop clicks, etc., from bubbling up to the map.
+            //Popup.preventMapHitsAndGesturesFrom(this.containerDiv);
+        }
+        onAdd() {
+            this.getPanes().floatPane.appendChild(this.containerDiv);
+        }
+        /** Called when the popup is removed from the map. */
+        onRemove() {
+            if (this.containerDiv.parentElement) {
+                this.containerDiv.parentElement.removeChild(this.containerDiv);
+            }
+        }
+        /** Called each frame when the popup needs to draw itself. */
+        draw() {
+            const divPosition = this.getProjection().fromLatLngToDivPixel(
+                this.position
+            );
+            // Hide the popup when it is far out of view.
+            const display =
+                Math.abs(divPosition.x) < 200 && Math.abs(divPosition.y) < 200
+                    ? "block"
+                    : "none";
+
+            if (display === "block") {
+                this.containerDiv.style.left = divPosition.x + "px";
+                this.containerDiv.style.top = divPosition.y + "px";
+            }
+
+            if (this.containerDiv.style.display !== display) {
+                this.containerDiv.style.display = display;
+            }
+        }
+    };
+
+    popup = new APP.Popup(new google.maps.LatLng(0, 0), "3933", "#ff0000");
+    popup.setMap(APP.map);
+
     APP.init();
 }
 
@@ -190,24 +253,36 @@ APP.init = async function () {
                 label: `${element.team_number} | ${element.nickname}`,
             });
             element.edges = [];
-            var marker = new google.maps.Marker({
-                position: {
-                    lat: Number(element.lat),
-                    lng: Number(element.lng),
-                },
-                icon: APP.getMarker(element.rookie_year),
-                map: this.map,
-                title: `${element.nickname} (${element.team_number})`,
-            });
 
-            element.marker = marker;
-            this.team_markers.push(marker);
-            APP.create_marker_listeners(
-                marker,
-                element,
-                "team",
-                element.team_number
+            let popup = new APP.Popup(
+                new google.maps.LatLng(
+                    Number(element.lat),
+                    Number(element.lng)
+                ),
+                element.team_number,
+                "#0000ff"
             );
+
+            popup.setMap(this.map);
+
+            // var marker = new google.maps.Marker({
+            //     position: {
+            //         lat: Number(element.lat),
+            //         lng: Number(element.lng),
+            //     },
+            //     icon: APP.getMarker(element.rookie_year),
+            //     map: this.map,
+            //     title: `${element.nickname} (${element.team_number})`,
+            // });
+
+            // element.marker = marker;
+            // this.team_markers.push(marker);
+            // APP.create_marker_listeners(
+            //     marker,
+            //     element,
+            //     "team",
+            //     element.team_number
+            // );
         }
     }
 
