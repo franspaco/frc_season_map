@@ -1,6 +1,6 @@
 # FIRST Robotics Challenge (FRC) Season Map
 
-_Updated for 2022_
+_Updated for 2023_
 
 [CLICK HERE TO VIEW ON frcmap.com](http://frcmap.com)
 
@@ -15,45 +15,29 @@ A TBA api key is required to get team data.
 ### Placement Errors
 If a team is misplaced or missing and you have the correct location info please submit an issue with the correct data. (and preferably some statement of affiliation to corroborate the info)
 
-You can also submit a pull request adding your team's correct location in `data/locations/teams.toml`. 
+You can also submit a pull request adding your team's correct location in `locations/teams.toml`. 
 
 ### Contribution
 I'm open to suggestions and contributions! Let me know if you have any ideas to make this better.
 
 ### Setup
-To use the data collector, create the file `data/api_keys.py` and save it with the contents:
+To use the data collector, create the file `api_keys.py` and save it with the contents:
 ```python
 tba_key = '<YOUR KEY HERE>'
 gmaps_key = '<YOUR KEY HERE>'
 ```
 
 ### Running
-To run just execute: `main.py`
+To run just execute: `make_map.py`
 
 This will:
 
-1. Run the script that looks up teams' locations. Only the teams not found in `data/data/all_team_locations_<year-1>.json` will be looked for.
+1. Run the script that looks up teams' locations. The script will look for manial overrides, then for archived location data, finally will try to get it from google maps.
 2. Fetch data for all teams.
 3. Fetch data for all events.
 4. Filter teams, leaving only those registered for events in the current year.
 5. Cross reference teams and events.
 6. Export `docs/data/season_<year>.json`
 
-
-### Other details
-Currently, the code assumes cached data is always valid. To force the program to check for updates from TBA, you must change this line:
-
-```python
-tba = tbahelper.TBAHelper(api_keys.tba_key, False)
-```
-to:
-```python
-tba = tbahelper.TBAHelper(api_keys.tba_key, True)
-```
-in the files:
-* `main.py`
-* `get_team_locations.py`
-
-This will use TBA's own update-checking mechanism detailed in their API docs.
 
 

@@ -6,7 +6,7 @@ let APP = {
     },
     team_markers: [],
     event_markers: [],
-    year: 2022,
+    year: 2023,
     legends: {
         l_rookie: "#7C008F",
         l_0: "#0000FF",
@@ -17,7 +17,7 @@ let APP = {
         l_5: "#00FF00",
         l_event: "#FF0000",
     },
-    records: [2022, 2020, 2019],
+    records: [2023, 2022, 2020, 2019],
 };
 
 async function initMap() {
