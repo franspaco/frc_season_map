@@ -59,7 +59,8 @@ class FRCGeocoder:
             self.archive = {}
 
     def __save_archive(self, teams: InfoDict):
-        data = {k0:{k1:v1 for k1,v1 in v0.items() if k1 in ["lat", "lng"]} for k0, v0 in teams.items()}
+        data = {k0: {k1: v1 for k1, v1 in v0.items() if k1 in [
+            "lat", "lng"]} for k0, v0 in teams.items()}
         name = f"all_team_locations_{datetime.datetime.now().year}.json"
         with open(os.path.join(self.archive_path, name), 'w', encoding='utf8') as f:
             json.dump(data, f)
@@ -82,11 +83,11 @@ class FRCGeocoder:
             except:
                 log.error(f"Could not geocode address for team {team['key']}")
                 team.update(FRCGeocoder.UNKNOWN)
-    
+
     def __noloc(self, item):
         return item["lat"] == None or item["lng"] == None
-    
-    def __dedup_locations(self, objects: InfoDict, obj_type:str) -> None:
+
+    def __dedup_locations(self, objects: InfoDict, obj_type: str) -> None:
         def location_tuple(item):
             return (item["lat"], item["lng"])
 
@@ -122,7 +123,7 @@ class FRCGeocoder:
 
         self.__save_archive(teams)
         log.info("Geolocating teams finished.")
-    
+
     def populate_event_locations(self, events: InfoDict) -> None:
         log.info("Geolocating events.")
         # Find locations
@@ -130,7 +131,8 @@ class FRCGeocoder:
             if key in self.events:
                 event.update(self.events[key])
             if self.__noloc(event):
+                event["ignore"] = True
                 log.error(f"Event {key} has no location!")
-        
+
         self.__dedup_locations(events, "Event")
         log.info("Geolocating events finished.")

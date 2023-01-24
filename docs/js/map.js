@@ -165,6 +165,11 @@ APP.init = async function () {
     for (const key in data.events) {
         if (data.events.hasOwnProperty(key)) {
             const element = data.events[key];
+            if (element.ignore === true) {
+                console.log(`Ignoring event: ${key}`);
+                continue;
+            }
+
             element.edges = [];
             element.edges_visible = false;
             var marker = new google.maps.Marker({
@@ -180,11 +185,17 @@ APP.init = async function () {
             APP.create_marker_listeners(marker, element, "event", key);
         }
     }
+    
     APP.team_autocomplete = [];
     // Make Teams
     for (const key in data.teams) {
         if (data.teams.hasOwnProperty(key)) {
             const element = data.teams[key];
+            if (element.ignore === true) {
+                console.log(`Ignoring team: ${key}`);
+                continue;
+            }
+
             APP.team_autocomplete.push({
                 value: key,
                 label: `${element.team_number} | ${element.nickname}`,
