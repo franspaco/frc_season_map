@@ -12,7 +12,12 @@ class TBAHelper:
     api = "https://www.thebluealliance.com/api/v3/"
 
     def __init__(self, TbaApiKey: str, cache_path: str):
-        self.session = CachedSession(cache_path, backend="filesystem", serializer="json")
+        self.session = CachedSession(
+            cache_path,
+            backend="filesystem",
+            serializer="json",
+            cache_control=True,
+        )
         self.session.headers["X-TBA-Auth-Key"] = TbaApiKey
         self.data_cache = {}
 
