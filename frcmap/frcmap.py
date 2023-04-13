@@ -48,5 +48,7 @@ class FRCMap:
     def write(self, output:str) -> None:
         if self.data == None:
             raise RuntimeError("Data has not been generated yet!")
+        with open(os.path.join(output, f"season_{self.year}_pretty.json"), 'w', encoding='utf8') as f:
+            json.dump(self.data, f, indent=4)
         with open(os.path.join(output, f"season_{self.year}.json"), 'w', encoding='utf8') as f:
             json.dump(self.data, f)
