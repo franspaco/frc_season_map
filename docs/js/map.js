@@ -91,13 +91,13 @@ APP.hide_edges = function (element) {
 
 function AddViewer() {
     this.viewer_count++;
-    console.log(this.name, this.viewer_count);
+    //console.log(this.name, this.viewer_count);
     this.setVisible(true);
 }
 
 function RemoveViewer() {
     this.viewer_count--;
-    console.log(this.name, this.viewer_count);
+    //console.log(this.name, this.viewer_count);
     if (this.viewer_count === 0) {
         this.setVisible(false);
     }
@@ -272,29 +272,34 @@ APP.init = async function () {
                 continue;
             }
             for (const event of element.events) {
+                var path = [
+                    {
+                        lat: Number(element.lat),
+                        lng: Number(element.lng),
+                    },
+                    {
+                        lat: Number(data.events[event].lat),
+                        lng: Number(data.events[event].lng),
+                    },
+                ];
+                var len = google.maps.geometry.spherical.computeLength(path);
                 var edge = new google.maps.Polyline({
-                    path: [
-                        {
-                            lat: Number(element.lat),
-                            lng: Number(element.lng),
-                        },
-                        {
-                            lat: Number(data.events[event].lat),
-                            lng: Number(data.events[event].lng),
-                        },
-                    ],
+                    path: path,
                     geodesic: false,
-                    strokeColor: "#FF0000",
+                    strokeColor: getColor(0, 10000000, len),
                     strokeOpacity: 1.0,
                     strokeWeight: 1,
                     map: APP.map,
+                    clickable: false,
+                    visible: false,
                 });
                 // This is a custom thing
                 edge.name = `${key}-${event}`;
                 edge.viewer_count = 0;
                 edge.AddViewer = AddViewer;
                 edge.RemoveViewer = RemoveViewer;
-                edge.setVisible(false);
+
+                // Add to event & team
                 data.events[event].edges.push(edge);
                 element.edges.push(edge);
             }
