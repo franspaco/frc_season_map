@@ -84,10 +84,6 @@
             <div class="mdl-layout__drawer">
             <span class="mdl-layout-title"> <i class="fas fa-layer-group"></i> Layers</span>
                 <nav class="mdl-navigation">
-                    <!-- <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a>
-                    <a class="mdl-navigation__link" href="">Link</a> -->
                     <div class="map-toggle">
                         <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-teams">
                             <input type="checkbox" id="switch-teams" class="mdl-switch__input" checked>
@@ -100,13 +96,19 @@
                             <span class="mdl-switch__label">Events</span>
                         </label>
                     </div>
+                    <div class="map-toggle">
+                        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-championships">
+                            <input type="checkbox" id="switch-championships" class="mdl-switch__input" checked>
+                            <span class="mdl-switch__label">Championships</span>
+                        </label>
+                    </div>
                     <div class="side-section">
                        <p>Usage:</p>
-                       <p class="desktop">Hover to see connections, click to open TBA page.</p>
+                       <p class="desktop">Hover or click to see connections, right click to open TBA page.</p>
                        <p class="mobile">Click to see connections, double-click to open TBA page.</p>
                     </div>
                     <div class="side-section">
-                       <p>Legend:</p>
+                        <p>Legend:</p>
                         <p>
                             <div class="mini-box" id="l_0"> </div> 1992 - 1999 <br/>
                             <div class="mini-box" id="l_1"> </div> 2000 - 2004 <br/>
@@ -116,6 +118,7 @@
                             <div class="mini-box" id="l_5"> </div> 2020 - 2024 <br/>
                             <div class="mini-box" id="l_rookie"> </div> Rookie (<span class="year"></span>) <br/>
                             <div class="mini-box" id="l_event"> </div> Event <br/>
+                            <div class="mini-box" id="l_champ"> </div> Championship <br/>
                         </p>
                         <p>Made with <i class="fas fa-heart love"></i> by <br> a FIRST volunteer.</p>
                         <p>

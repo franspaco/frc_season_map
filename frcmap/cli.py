@@ -1,5 +1,3 @@
-
-
 import argparse
 import datetime
 import json
@@ -11,8 +9,11 @@ import logging
 from .frcmap import FRCMap
 from .frcgeocoder import LocationDict
 
-logging.basicConfig(level=logging.INFO,
-                    format="[%(asctime)s-%(levelname)s-%(name)s] %(message)s", datefmt="%H:%M")
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s-%(levelname)s-%(name)s] %(message)s",
+    datefmt="%H:%M",
+)
 log = logging.getLogger(__name__)
 
 
@@ -23,8 +24,7 @@ def run(root_path):
     try:
         import api_keys
     except:
-        log.critical(
-            "Api Keys file not found, creating 'api_keys.py'. Add your keys there.")
+        log.critical("Api Keys file not found, creating 'api_keys.py'. Add your keys there.")
         with open("api_keys.py", "w") as f:
             f.write(
                 """
@@ -40,32 +40,53 @@ def run(root_path):
     def relative_path(path: str) -> str:
         return os.path.join(root_path, path)
 
-    parser = argparse.ArgumentParser(description='Generate FRC Map')
-    parser.add_argument('-y', '--year', metavar='YEAR', type=int,
-                        help='FRC Season.', default=datetime.datetime.now().year)
+    parser = argparse.ArgumentParser(description="Generate FRC Map")
+    parser.add_argument(
+        "-y",
+        "--year",
+        metavar="YEAR",
+        type=int,
+        help="FRC Season.",
+        default=datetime.datetime.now().year,
+    )
 
-    parser.add_argument('-t', '--team-locations',
-                        dest="teams",
-                        help='Path to TOML file with team manual location data.',
-                        default=relative_path('locations/teams.toml'))
+    parser.add_argument(
+        "-t",
+        "--team-locations",
+        dest="teams",
+        help="Path to TOML file with team manual location data.",
+        default=relative_path("locations/teams.toml"),
+    )
 
-    parser.add_argument('-e', '--event-locations',
-                        dest="events",
-                        help='Path to TOML file with event manual location data.',
-                        default=relative_path('locations/events.toml'))
+    parser.add_argument(
+        "-e",
+        "--event-locations",
+        dest="events",
+        help="Path to TOML file with event manual location data.",
+        default=relative_path("locations/events.toml"),
+    )
 
-    parser.add_argument('-l', '--location-archive',
-                        dest='archive',
-                        help="Path to location archive directory.",
-                        default=relative_path('locations/archive'))
+    parser.add_argument(
+        "-l",
+        "--location-archive",
+        dest="archive",
+        help="Path to location archive directory.",
+        default=relative_path("locations/archive"),
+    )
 
-    parser.add_argument('-c', '--cache-location',
-                        help='TBA API cache directory location.',
-                        default=relative_path('cache'))
-    
-    parser.add_argument('-o', '--output-location',
-                        help='Directory to write JSON output to.',
-                        default=relative_path('docs/data'))
+    parser.add_argument(
+        "-c",
+        "--cache-location",
+        help="TBA API cache directory location.",
+        default=relative_path("cache"),
+    )
+
+    parser.add_argument(
+        "-o",
+        "--output-location",
+        help="Directory to write JSON output to.",
+        default=relative_path("docs/data"),
+    )
 
     args = parser.parse_args()
 
@@ -82,13 +103,13 @@ def run(root_path):
     teams: LocationDict = {}
     if os.path.exists(args.teams):
         log.info(f"Loading team locations from:  {args.teams}")
-        with open(args.teams, 'rb') as f:
+        with open(args.teams, "rb") as f:
             teams = tomllib.load(f)
 
     events: LocationDict = {}
     if os.path.exists(args.events):
         log.info(f"Loading event locations from: {args.events}")
-        with open(args.events, 'rb') as f:
+        with open(args.events, "rb") as f:
             events = tomllib.load(f)
 
     # Make sure archive path exists.
@@ -99,7 +120,7 @@ def run(root_path):
             exit()
     else:
         os.makedirs(archive_path, exist_ok=True)
-    
+
     # Make sure output path exists.
     output = args.output_location
     if os.path.exists(output):
@@ -110,13 +131,15 @@ def run(root_path):
         os.makedirs(output, exist_ok=True)
 
     # Create main object
-    frcmap = FRCMap(TbaApiKey=api_keys.tba_key,
-                    GMapsApiKey=api_keys.gmaps_key,
-                    year=args.year,
-                    cache=cache,
-                    archive=archive_path,
-                    teams=teams,
-                    events=events)
+    frcmap = FRCMap(
+        TbaApiKey=api_keys.tba_key,
+        GMapsApiKey=api_keys.gmaps_key,
+        year=args.year,
+        cache=cache,
+        archive=archive_path,
+        teams=teams,
+        events=events,
+    )
 
     frcmap.generate()
     frcmap.write(output)

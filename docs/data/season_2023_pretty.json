@@ -79143,7 +79143,8 @@
                 "frc9073",
                 "frc9280",
                 "frc9313"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023arli": {
             "address": "915 E Market Ave, Searcy, AR 72149, USA",
@@ -79215,7 +79216,8 @@
                 "frc7525",
                 "frc9067",
                 "frc9073"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ausc": {
             "address": "Corner Crown &, Harbour St, Wollongong NSW 2500, Australia",
@@ -79291,7 +79293,8 @@
                 "frc9147",
                 "frc9189",
                 "frc9191"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023azgl": {
             "address": "6330 W Greenway Rd, Glendale, AZ 85306, USA",
@@ -79376,7 +79379,8 @@
                 "frc8087",
                 "frc8848",
                 "frc9059"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023azva": {
             "address": "6935 E Gold Dust Ave, Scottsdale, AZ 85253, USA",
@@ -79456,7 +79460,8 @@
                 "frc9059",
                 "frc9091",
                 "frc991"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023bcvi": {
             "address": "1925 Blanshard St, Victoria, BC V8T 4J2, Canada",
@@ -79535,7 +79540,8 @@
                 "frc9272",
                 "frc9277",
                 "frc9292"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023brbr": {
             "address": "SRPN Arena BRB Man\u00e9 Garrincha - Asa Norte, Bras\u00edlia - DF, 70070-701, Brazil",
@@ -79641,7 +79647,8 @@
                 "frc9261",
                 "frc9302",
                 "frc9305"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023caav": {
             "address": "3200 E Ave J 8, Lancaster, CA 93535, USA",
@@ -79720,7 +79727,8 @@
                 "frc9084",
                 "frc980",
                 "frc981"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cada": {
             "address": "164 Orchard Park Dr, Davis, CA 95616, USA",
@@ -79809,7 +79817,8 @@
                 "frc8768",
                 "frc8793",
                 "frc9114"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cafr": {
             "address": "848 M St, Fresno, CA 93721, USA",
@@ -79890,7 +79899,8 @@
                 "frc9202",
                 "frc9274",
                 "frc973"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cala": {
             "address": "201 N Douglas St, El Segundo, CA 90245, USA",
@@ -79977,7 +79987,8 @@
                 "frc8898",
                 "frc9172",
                 "frc980"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023camb": {
             "address": "2200 Noche Buena St, Seaside, CA 93955, USA",
@@ -80056,7 +80067,8 @@
                 "frc852",
                 "frc9125",
                 "frc971"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023caoc": {
             "address": "88 Fair Dr, Costa Mesa, CA 92626, USA",
@@ -80146,7 +80158,8 @@
                 "frc9271",
                 "frc968",
                 "frc987"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023caph": {
             "address": "Port Hueneme, CA, USA",
@@ -80233,7 +80246,8 @@
                 "frc8891",
                 "frc972",
                 "frc973"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023casd": {
             "address": "9730 Hopkins Dr, La Jolla, CA 92093, USA",
@@ -80326,7 +80340,8 @@
                 "frc8870",
                 "frc8891",
                 "frc973"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023casf": {
             "address": "2001 37th Ave, San Francisco, CA 94116, USA",
@@ -80411,7 +80426,8 @@
                 "frc9143",
                 "frc971",
                 "frc972"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023casj": {
             "address": "290 S 7th St, San Jose, CA 95112, USA",
@@ -80514,7 +80530,8 @@
                 "frc9126",
                 "frc9143",
                 "frc972"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cave": {
             "address": "Port Hueneme, CA, USA",
@@ -80531,8 +80548,8 @@
             "gmaps_place_id": "ChIJKcrafwBL6IARVHqFVcI6M0g",
             "gmaps_url": "https://maps.google.com/?q=Port+Hueneme,+CA,+USA&ftid=0x80e84b007fdaca29:0x48333ac255857a54",
             "key": "2023cave",
-            "lat": 34.145083218590734,
-            "lng": -119.19326387543153,
+            "lat": 34.14870685629058,
+            "lng": -119.19666799175087,
             "location_name": "Port Hueneme",
             "name": "Ventura County Regional",
             "parent_event_key": null,
@@ -80603,7 +80620,8 @@
                 "frc8006",
                 "frc8533",
                 "frc9084"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cc": {
             "address": "960 W Hedding St, San Jose, CA 95126, USA",
@@ -80638,7 +80656,8 @@
             "year": 2023,
             "teams": [
                 "frc254"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023chcmp": {
             "address": "EagleBank Arena, 4500 Patriot Cir, Fairfax, VA 22030, USA",
@@ -80741,7 +80760,8 @@
                 "frc888",
                 "frc9033",
                 "frc977"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cmptx": {
             "address": "1001 Avenida De Las Americas, Houston, TX 77010, USA",
@@ -81029,7 +81049,8 @@
                 "frc972",
                 "frc973",
                 "frc987"
-            ]
+            ],
+            "is_cmp": true
         },
         "2023code": {
             "address": "Nagel Art Studios, 2201 E Asbury Ave, Denver, CO 80210, USA",
@@ -81115,7 +81136,8 @@
                 "frc8334",
                 "frc9068",
                 "frc9112"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cops": {
             "address": "1590 W Fillmore St, Colorado Springs, CO 80904, USA",
@@ -81176,7 +81198,8 @@
                 "frc662",
                 "frc7737",
                 "frc8334"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023cthar": {
             "address": "55 Forest St, East Hartford, CT 06118, USA",
@@ -81264,7 +81287,8 @@
                 "frc9216",
                 "frc95",
                 "frc999"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ctwat": {
             "address": "568 Bucks Hill Rd, Waterbury, CT 06704, USA",
@@ -81346,7 +81370,8 @@
                 "frc9193",
                 "frc9216",
                 "frc999"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023flor": {
             "address": "12777 Gemini Blvd N, Orlando, FL 32816, USA",
@@ -81443,7 +81468,8 @@
                 "frc8841",
                 "frc9279",
                 "frc9284"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023flta": {
             "address": "1800 Wahnish Way, Tallahassee, FL 32310, USA",
@@ -81524,7 +81550,8 @@
                 "frc9284",
                 "frc9300",
                 "frc9313"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023flwp": {
             "address": "650 Okeechobee Blvd, West Palm Beach, FL 33401, USA",
@@ -81602,7 +81629,8 @@
                 "frc8817",
                 "frc9040",
                 "frc9281"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023gaalb": {
             "address": "100 W Oglethorpe Blvd, Albany, GA 31701, USA",
@@ -81677,7 +81705,8 @@
                 "frc9983",
                 "frc9984",
                 "frc9985"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023gacar": {
             "address": "1601 Maple St, Carrollton, GA 30117, USA",
@@ -81753,7 +81782,8 @@
                 "frc8761",
                 "frc8866",
                 "frc9293"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023gacmp": {
             "address": "261 Stars Way, Emerson, GA 30121, USA",
@@ -81807,7 +81837,8 @@
                 "frc7451",
                 "frc7538",
                 "frc8575"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023gadal": {
             "address": "2211 Dug Gap Battle Rd, Dalton, GA 30720, USA",
@@ -81880,7 +81911,8 @@
                 "frc8761",
                 "frc8865",
                 "frc8866"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023gagwi": {
             "address": "1335 Old Norcross Rd, Lawrenceville, GA 30046, USA",
@@ -81955,7 +81987,8 @@
                 "frc9057",
                 "frc9086",
                 "frc9293"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023gamac": {
             "address": "University Center, 1400 Coleman Ave, Macon, GA 31207, USA",
@@ -82032,7 +82065,8 @@
                 "frc8849",
                 "frc9057",
                 "frc9260"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023hiho": {
             "address": "1355 Lower Campus Rd, Honolulu, HI 96822, USA",
@@ -82108,7 +82142,8 @@
                 "frc9012",
                 "frc9019",
                 "frc9158"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023iacf": {
             "address": "2501 Hudson Rd, Cedar Falls, IA 50614, USA",
@@ -82207,7 +82242,8 @@
                 "frc9082",
                 "frc9092",
                 "frc967"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023idbo": {
             "address": "16114 N Idaho Center Blvd, Nampa, ID 83687, USA",
@@ -82298,7 +82334,8 @@
                 "frc9044",
                 "frc9243",
                 "frc9314"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ilch": {
             "address": "525 S Racine Ave, Chicago, IL 60607, USA",
@@ -82387,7 +82424,8 @@
                 "frc8880",
                 "frc9082",
                 "frc930"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ilpe": {
             "address": "1600 W Main St, Peoria, IL 61606, USA",
@@ -82462,7 +82500,8 @@
                 "frc6651",
                 "frc7417",
                 "frc7848"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ilwz": {
             "address": "Binyamina-Giv'at Ada, Israel",
@@ -82500,7 +82539,8 @@
             "website": "https://www.1690orbit.com/",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         },
         "2023incmp": {
             "address": null,
@@ -82547,7 +82587,8 @@
                 "frc135",
                 "frc1741",
                 "frc461"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ingre": {
             "address": "2717 S Morgantown Rd, Greenwood, IN 46143, USA",
@@ -82619,7 +82660,8 @@
                 "frc7657",
                 "frc829",
                 "frc8564"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023inmis": {
             "address": "56100 Bittersweet Rd, Mishawaka, IN 46545, USA",
@@ -82696,7 +82738,8 @@
                 "frc910",
                 "frc9119",
                 "frc9208"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023inpri": {
             "address": null,
@@ -82768,7 +82811,8 @@
                 "frc868",
                 "frc8742",
                 "frc9119"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023inwla": {
             "address": "1801 S 18th St, Lafayette, IN 47905, USA",
@@ -82844,7 +82888,8 @@
                 "frc829",
                 "frc8742",
                 "frc9071"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023iscmp": {
             "address": "Derech David Banbanishty 1, Jerusalem, Israel",
@@ -82933,7 +82978,8 @@
                 "frc7845",
                 "frc8175",
                 "frc9303"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023isde1": {
             "address": "Ha-Palmakh St 2, Ra'anana, Israel",
@@ -83002,7 +83048,8 @@
                 "frc6741",
                 "frc7067",
                 "frc9304"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023isde2": {
             "address": "Ha-Palmakh St 2, Ra'anana, Israel",
@@ -83024,8 +83071,8 @@
             "gmaps_place_id": "ChIJowasimU4HRURm0EgIcpHD_0",
             "gmaps_url": "https://maps.google.com/?cid=18234872349711155611",
             "key": "2023isde2",
-            "lat": 32.19088071084957,
-            "lng": 34.876888808500226,
+            "lat": 32.191056210335574,
+            "lng": 34.87832116737091,
             "location_name": "Mor Metro-West High School",
             "name": "ISR District Event #2",
             "parent_event_key": null,
@@ -83075,7 +83122,8 @@
                 "frc7845",
                 "frc8175",
                 "frc9303"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023isde3": {
             "address": "Ha-Palmakh St 2, Ra'anana, Israel",
@@ -83097,8 +83145,8 @@
             "gmaps_place_id": "ChIJowasimU4HRURm0EgIcpHD_0",
             "gmaps_url": "https://maps.google.com/?cid=18234872349711155611",
             "key": "2023isde3",
-            "lat": 32.18785765302248,
-            "lng": 34.878358205957554,
+            "lat": 32.18849984863227,
+            "lng": 34.87667537905501,
             "location_name": "Mor Metro-West High School",
             "name": "ISR District Event #3",
             "parent_event_key": null,
@@ -83149,7 +83197,8 @@
                 "frc7845",
                 "frc8175",
                 "frc8223"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023isde4": {
             "address": "Ha-Palmakh St 2, Ra'anana, Israel",
@@ -83171,8 +83220,8 @@
             "gmaps_place_id": "ChIJowasimU4HRURm0EgIcpHD_0",
             "gmaps_url": "https://maps.google.com/?cid=18234872349711155611",
             "key": "2023isde4",
-            "lat": 32.192015663252,
-            "lng": 34.876443764227375,
+            "lat": 32.18952038245827,
+            "lng": 34.877206573081416,
             "location_name": "Mor Metro-West High School",
             "name": "ISR District Event #4",
             "parent_event_key": null,
@@ -83225,7 +83274,8 @@
                 "frc8223",
                 "frc9303",
                 "frc9304"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ksla": {
             "address": "1640 E 151st St, Olathe, KS 66062, USA",
@@ -83304,7 +83354,8 @@
                 "frc8825",
                 "frc9269",
                 "frc935"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023lake": {
             "address": "4545 Williams Blvd, Kenner, LA 70065, USA",
@@ -83386,7 +83437,8 @@
                 "frc9153",
                 "frc9240",
                 "frc9309"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mabos": {
             "address": "101 School St, Revere, MA 02151, USA",
@@ -83482,7 +83534,8 @@
                 "frc8708",
                 "frc8709",
                 "frc97"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mabri": {
             "address": "415 Center St, Bridgewater, MA 02324, USA",
@@ -83556,7 +83609,8 @@
                 "frc88",
                 "frc9055",
                 "frc9286"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023marea": {
             "address": "62 Oakland Rd, Reading, MA 01867, USA",
@@ -83644,7 +83698,8 @@
                 "frc8724",
                 "frc88",
                 "frc97"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mawne": {
             "address": "1215 Wilbraham Rd, Springfield, MA 01119, USA",
@@ -83728,7 +83783,8 @@
                 "frc8604",
                 "frc8709",
                 "frc9096"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mawor": {
             "address": "100 Institute Rd, Worcester, MA 01609, USA",
@@ -83816,7 +83872,8 @@
                 "frc8567",
                 "frc9096",
                 "frc9101"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mdbet": {
             "address": "7100 Whittier Blvd, Bethesda, MD 20817, USA",
@@ -83896,7 +83953,8 @@
                 "frc8514",
                 "frc8622",
                 "frc888"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mdtim": {
             "address": "255 E Padonia Rd, Timonium, MD 21093, USA",
@@ -83976,7 +84034,8 @@
                 "frc8726",
                 "frc888",
                 "frc9072"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mibel": {
             "address": "501 W Columbia Ave, Belleville, MI 48111, USA",
@@ -84060,7 +84119,8 @@
                 "frc9211",
                 "frc9226",
                 "frc94"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023micmp": {
             "address": "7400 Bay Rd, University Center, MI 48710, USA",
@@ -84134,7 +84194,8 @@
                 "frc7174",
                 "frc7226",
                 "frc910"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023midet": {
             "address": "2501 2nd Ave, Detroit, MI 48201, USA",
@@ -84217,7 +84278,8 @@
                 "frc8352",
                 "frc8774",
                 "frc9255"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023midtr": {
             "address": "5101 John C Lodge Fwy, Detroit, MI 48202, USA",
@@ -84300,7 +84362,8 @@
                 "frc9207",
                 "frc9250",
                 "frc9253"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023miesc": {
             "address": "500 S Lincoln Rd, Escanaba, MI 49829, USA",
@@ -84386,7 +84449,8 @@
                 "frc857",
                 "frc9188",
                 "frc9249"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mifor": {
             "address": "3195 Knight Way Southeast, Grand Rapids, MI 49546, USA",
@@ -84474,7 +84538,8 @@
                 "frc8611",
                 "frc8612",
                 "frc9106"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mijac": {
             "address": "Chapman Welcome Center, 106 E Main St, Spring Arbor, MI 49283, USA",
@@ -84560,7 +84625,8 @@
                 "frc9209",
                 "frc9210",
                 "frc9312"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mike2": {
             "address": "Connie and Jim John Recreation Center, 1700 University Ave, Flint, MI 48504, USA",
@@ -84643,7 +84709,8 @@
                 "frc8426",
                 "frc9237",
                 "frc9242"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023miken": {
             "address": "6230 Kalamazoo Ave SE, Kentwood, MI 49508, USA",
@@ -84726,7 +84793,8 @@
                 "frc9215",
                 "frc9222",
                 "frc9228"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023miket": {
             "address": "Connie and Jim John Recreation Center, 1700 University Ave, Flint, MI 48504, USA",
@@ -84748,8 +84816,8 @@
             "gmaps_place_id": "ChIJSdPbRHuCI4gR_usXV4Uba6w",
             "gmaps_url": "https://maps.google.com/?cid=12424054256537431038",
             "key": "2023miket",
-            "lat": 43.01189262617952,
-            "lng": -83.71585218531963,
+            "lat": 43.0111993608921,
+            "lng": -83.71195749129014,
             "location_name": "Kettering University Connie and Jim John Recreation Center",
             "name": "FIM District Kettering University Event #1 presented by Ford",
             "parent_event_key": null,
@@ -84813,7 +84881,8 @@
                 "frc9207",
                 "frc9242",
                 "frc9251"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mikk": {
             "address": "1900 University Ave, Flint, MI 48504, USA",
@@ -84851,7 +84920,8 @@
             "website": "",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         },
         "2023mikk2": {
             "address": "1900 University Ave, Flint, MI 48504, USA",
@@ -84868,8 +84938,8 @@
             "gmaps_place_id": "ChIJIe5Gj2SCI4gREbGW1XBp4B0",
             "gmaps_url": "https://maps.google.com/?cid=2152836555223773457",
             "key": "2023mikk2",
-            "lat": 43.01538524455968,
-            "lng": -83.7122351562287,
+            "lat": 43.01262970203423,
+            "lng": -83.71171392552473,
             "location_name": "FIRST Community Center",
             "name": "Kettering Week 0 - PM Session",
             "parent_event_key": null,
@@ -84889,7 +84959,8 @@
             "website": "https://twitch.tv/firstupdatesnow",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         },
         "2023mila2": {
             "address": "15060 Helmer Rd S, Battle Creek, MI 49015, USA",
@@ -84973,7 +85044,8 @@
                 "frc9183",
                 "frc9223",
                 "frc9278"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023milak": {
             "address": "15060 Helmer Rd S, Battle Creek, MI 49015, USA",
@@ -84995,8 +85067,8 @@
             "gmaps_place_id": "ChIJFXoKRX_tF4gRXS8m69o8BAM",
             "gmaps_url": "https://maps.google.com/?q=15060+Helmer+Rd+S,+Battle+Creek,+MI+49015,+USA&ftid=0x8817ed7f450a7a15:0x3043cdaeb262f5d",
             "key": "2023milak",
-            "lat": 42.29100306415816,
-            "lng": -85.23106693383264,
+            "lat": 42.29127358127044,
+            "lng": -85.23099748900579,
             "location_name": "15060 Helmer Rd S",
             "name": "FIM District Lakeview Event #1 presented by Parker-Hannifin",
             "parent_event_key": null,
@@ -85056,7 +85128,8 @@
                 "frc9238",
                 "frc9278",
                 "frc9312"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023milan": {
             "address": "1001 S Barnes St, Mason, MI 48854, USA",
@@ -85136,7 +85209,8 @@
                 "frc8873",
                 "frc9203",
                 "frc9241"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023miliv": {
             "address": "8900 Newburgh Rd, Livonia, MI 48150, USA",
@@ -85220,7 +85294,8 @@
                 "frc9205",
                 "frc9250",
                 "frc9253"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023milsu": {
             "address": "650 W Easterday Ave, Sault Ste. Marie, MI 49783, USA",
@@ -85304,7 +85379,8 @@
                 "frc9176",
                 "frc9188",
                 "frc9249"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mimcc": {
             "address": "14500 Twelve Mile Rd, Warren, MI 48088, USA",
@@ -85388,7 +85464,8 @@
                 "frc9245",
                 "frc9252",
                 "frc9255"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mimid": {
             "address": "3901 N Saginaw Rd, Midland, MI 48640, USA",
@@ -85475,7 +85552,8 @@
                 "frc8873",
                 "frc9225",
                 "frc9246"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mimil": {
             "address": "2380 S Milford Rd, Milford, MI 48380, USA",
@@ -85561,7 +85639,8 @@
                 "frc8899",
                 "frc9204",
                 "frc9239"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mimus": {
             "address": "16 N Quarterline Rd, Muskegon, MI 49442, USA",
@@ -85643,7 +85722,8 @@
                 "frc9225",
                 "frc9246",
                 "frc9248"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023misal": {
             "address": "1300 Campus Pkwy, Ann Arbor, MI 48108, USA",
@@ -85723,7 +85803,8 @@
                 "frc9210",
                 "frc9211",
                 "frc9241"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023misjo": {
             "address": "2521 Stadium Dr, St Joseph, MI 49085, USA",
@@ -85806,7 +85887,8 @@
                 "frc9228",
                 "frc9239",
                 "frc94"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mista": {
             "address": "2401 Grove Street Rd, Standish, MI 48658, USA",
@@ -85889,7 +85971,8 @@
                 "frc894",
                 "frc9227",
                 "frc9245"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mitr2": {
             "address": "4333 John R Rd, Troy, MI 48085, USA",
@@ -85976,7 +86059,8 @@
                 "frc9237",
                 "frc9238",
                 "frc9251"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mitry": {
             "address": "4333 John R Rd, Troy, MI 48085, USA",
@@ -85998,8 +86082,8 @@
             "gmaps_place_id": "ChIJk2JyLWPDJIgR7qrsHnpn02U",
             "gmaps_url": "https://maps.google.com/?q=4333+John+R+Rd,+Troy,+MI+48085,+USA&ftid=0x8824c3632d726293:0x65d3677a1eecaaee",
             "key": "2023mitry",
-            "lat": 42.58200192645064,
-            "lng": -83.11088115917461,
+            "lat": 42.581306287348994,
+            "lng": -83.11091983933575,
             "location_name": "4333 John R Rd",
             "name": "FIM District Troy Event #1 presented by Aptiv",
             "parent_event_key": null,
@@ -86062,7 +86146,8 @@
                 "frc9212",
                 "frc9226",
                 "frc9252"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mitvc": {
             "address": "1150 Milliken Dr, Traverse City, MI 49686, USA",
@@ -86144,7 +86229,8 @@
                 "frc8611",
                 "frc910",
                 "frc9176"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023miwmi": {
             "address": "10915 N Campus Dr, Allendale, MI 49401, USA",
@@ -86227,7 +86313,8 @@
                 "frc9206",
                 "frc9222",
                 "frc9248"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mndu": {
             "address": "350 Harbor Dr, Duluth, MN 55802, USA",
@@ -86330,7 +86417,8 @@
                 "frc8836",
                 "frc8878",
                 "frc93"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mndu2": {
             "address": "350 Harbor Dr, Duluth, MN 55802, USA",
@@ -86347,8 +86435,8 @@
             "gmaps_place_id": "ChIJaTNyg5NSrlIRB45Mfkoq8Oc",
             "gmaps_url": "https://maps.google.com/?cid=16712904716606803463",
             "key": "2023mndu2",
-            "lat": 46.78321302191654,
-            "lng": -92.09905837185279,
+            "lat": 46.78017899723314,
+            "lng": -92.09727201459987,
             "location_name": "Duluth Entertainment Convention Center",
             "name": "Northern Lights Regional",
             "parent_event_key": null,
@@ -86432,7 +86520,8 @@
                 "frc7864",
                 "frc8700",
                 "frc8803"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mnkk": {
             "address": "2425 Long Lake Rd, New Brighton, MN 55112, USA",
@@ -86470,7 +86559,8 @@
             "website": "https://www.team2052.com/2023-week-zero/",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         },
         "2023mnmi": {
             "address": "1925 University Ave SE, Minneapolis, MN 55455, USA",
@@ -86574,7 +86664,8 @@
                 "frc8255",
                 "frc8787",
                 "frc9157"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mnmi2": {
             "address": "300 Harborview Plaza, La Crosse, WI 54601, USA",
@@ -86656,7 +86747,8 @@
                 "frc7028",
                 "frc7038",
                 "frc876"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mnwz": {
             "address": "4185 Braddock Trail, Eagan, MN 55123, USA",
@@ -86735,7 +86827,8 @@
                 "frc8516",
                 "frc8744",
                 "frc9149"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mokc": {
             "address": "901 NE Douglas St, Lee's Summit, MO 64086, USA",
@@ -86814,7 +86907,8 @@
                 "frc9085",
                 "frc9316",
                 "frc937"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mose": {
             "address": "2010 Tiger Pride Blvd, Sedalia, MO 65301, USA",
@@ -86884,7 +86978,8 @@
                 "frc8112",
                 "frc8825",
                 "frc9031"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mosl": {
             "address": "1 S Compton Ave, St. Louis, MO 63103, USA",
@@ -86970,7 +87065,8 @@
                 "frc9031",
                 "frc931",
                 "frc967"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mrcmp": {
             "address": "Stabler Athletic & Convocation Center, 124 Goodman Dr, Bethlehem, PA 18015, USA",
@@ -87014,7 +87110,8 @@
                 "frc1712",
                 "frc2590",
                 "frc321"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mslr": {
             "address": "1457 Ellisville Blvd, Laurel, MS 39440, USA",
@@ -87086,7 +87183,8 @@
                 "frc8044",
                 "frc8732",
                 "frc8808"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mxmo": {
             "address": "Av. Junco de la Vega 2501, Tecnol\u00f3gico, 64849 Monterrey, N.L., Mexico",
@@ -87170,7 +87268,8 @@
                 "frc9213",
                 "frc9280",
                 "frc9282"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mxpu": {
             "address": "Atlixc\u00e1yotl 5718, Reserva Territorial Atlixc\u00e1yotl, 72453 Puebla, Pue., Mexico",
@@ -87246,7 +87345,8 @@
                 "frc9065",
                 "frc9118",
                 "frc9282"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023mxto": {
             "address": "P.\u00ba del Tecnol\u00f3gico 751, La Rosita, Amp la Rosita, 27258 Torre\u00f3n, Coah., Mexico",
@@ -87330,7 +87430,8 @@
                 "frc9120",
                 "frc9134",
                 "frc9301"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ncash": {
             "address": "The Sherrill Center and Kimmell Arena, 227 Campus Dr, Asheville, NC 28804, USA",
@@ -87403,7 +87504,8 @@
                 "frc9005",
                 "frc9150",
                 "frc9298"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nccmp": {
             "address": "1 Ficklen Dr, Greenville, NC 27858, USA",
@@ -87487,7 +87589,8 @@
                 "frc9150",
                 "frc9198",
                 "frc9259"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ncjoh": {
             "address": "600 S Fayetteville St, Clayton, NC 27520, USA",
@@ -87561,7 +87664,8 @@
                 "frc9008",
                 "frc9042",
                 "frc9259"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ncmec": {
             "address": "North Carolina, USA",
@@ -87632,7 +87736,8 @@
                 "frc9296",
                 "frc9297",
                 "frc9298"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ncpem": {
             "address": "176 University Drive, Pembroke, NC 28372, USA",
@@ -87708,7 +87813,8 @@
                 "frc9198",
                 "frc9296",
                 "frc9297"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ncwak": {
             "address": "North Carolina, USA",
@@ -87730,8 +87836,8 @@
             "gmaps_place_id": "ChIJgRo4_MQfVIgRGa4i6fUwP60",
             "gmaps_url": "https://maps.google.com/?q=North+Carolina,+USA&ftid=0x88541fc4fc381a81:0xad3f30f5e922ae19",
             "key": "2023ncwak",
-            "lat": 35.7574776104365,
-            "lng": -79.0170200048535,
+            "lat": 35.76035973110001,
+            "lng": -79.01818639121889,
             "location_name": "North Carolina",
             "name": "FNC District Wake County Event",
             "parent_event_key": null,
@@ -87779,7 +87885,8 @@
                 "frc9008",
                 "frc9032",
                 "frc9259"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ndgf": {
             "address": "1200 S 42nd St, Grand Forks, ND 58201, USA",
@@ -87875,7 +87982,8 @@
                 "frc877",
                 "frc8878",
                 "frc8887"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023necmp": {
             "address": "Young Building, 1305 Memorial Ave, West Springfield, MA 01089, USA",
@@ -87922,7 +88030,8 @@
                 "frc5112",
                 "frc61",
                 "frc6328"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nhdur": {
             "address": "128 Main St, Durham, NH 03824, USA",
@@ -88011,7 +88120,8 @@
                 "frc8410",
                 "frc9055",
                 "frc9101"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nhgrs": {
             "address": "44 Geremonty Dr, Salem, NH 03079, USA",
@@ -88094,7 +88204,8 @@
                 "frc8708",
                 "frc8724",
                 "frc95"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023njfla": {
             "address": "18 Corey Rd, Flanders, NJ 07836, USA",
@@ -88181,7 +88292,8 @@
                 "frc8513",
                 "frc8628",
                 "frc9116"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023njrob": {
             "address": "Robbinsville High School, 155 Robbinsville Edinburg Rd, Robbinsville Twp, NJ 08691, USA",
@@ -88262,7 +88374,8 @@
                 "frc8714",
                 "frc9015",
                 "frc9116"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023njski": {
             "address": "1016 Rt 601, Skillman, NJ 08558, USA",
@@ -88347,7 +88460,8 @@
                 "frc8588",
                 "frc8706",
                 "frc8714"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023njtab": {
             "address": "110 Carranza Rd, Tabernacle, NJ 08088, USA",
@@ -88428,7 +88542,8 @@
                 "frc8704",
                 "frc8721",
                 "frc9100"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023njwas": {
             "address": "41 Jackson Valley Rd, Washington, NJ 07882, USA",
@@ -88509,7 +88624,8 @@
                 "frc8706",
                 "frc8707",
                 "frc9015"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nvlv": {
             "address": "4505 S Maryland Pkwy, Las Vegas, NV 89154, USA",
@@ -88596,7 +88712,8 @@
                 "frc987",
                 "frc988",
                 "frc991"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nyli": {
             "address": "245, Hofstra University, Hempstead, NY 11549, USA",
@@ -88692,7 +88809,8 @@
                 "frc870",
                 "frc8760",
                 "frc9016"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nyli2": {
             "address": "245, Hofstra University, Hempstead, NY 11549, USA",
@@ -88709,8 +88827,8 @@
             "gmaps_place_id": "ChIJc8DiZJh9wokResqrji5Qr_s",
             "gmaps_url": "https://maps.google.com/?cid=18135802385336617594",
             "key": "2023nyli2",
-            "lat": 40.71813026675742,
-            "lng": -73.59637531894114,
+            "lat": 40.71804840042092,
+            "lng": -73.59544783571744,
             "location_name": "David S. Mack Sports and Exhibition Complex - Hofstra University",
             "name": "FIRST Long Island Regional #2",
             "parent_event_key": null,
@@ -88782,7 +88900,8 @@
                 "frc884",
                 "frc9016",
                 "frc9184"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nyny": {
             "address": "216 Fort Washington Ave, New York, NY 10032, USA",
@@ -88874,7 +88993,8 @@
                 "frc9030",
                 "frc9052",
                 "frc9295"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nyro": {
             "address": "1 Lomb Memorial Dr, Rochester, NY 14623, USA",
@@ -88972,7 +89092,8 @@
                 "frc7636",
                 "frc7903",
                 "frc8393"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nyrra": {
             "address": "25 High School Dr, Penfield, NY 14526, USA",
@@ -89010,7 +89131,8 @@
             "website": "",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         },
         "2023nytr": {
             "address": "51 S Pearl St, Albany, NY 12207, USA",
@@ -89101,7 +89223,8 @@
                 "frc810",
                 "frc8739",
                 "frc9099"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023nywz": {
             "address": "10 Cherry Ave, Bethpage, NY 11714, USA",
@@ -89160,7 +89283,8 @@
                 "frc9016",
                 "frc9998",
                 "frc9999"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ohcl": {
             "address": "Wolstein Center, 2000 Prospect Ave E, Cleveland, OH 44115, USA",
@@ -89255,7 +89379,8 @@
                 "frc8718",
                 "frc9075",
                 "frc9194"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ohmv": {
             "address": "3800 Victory Pkwy, Cincinnati, OH 45207, USA",
@@ -89349,7 +89474,8 @@
                 "frc7165",
                 "frc7515",
                 "frc9097"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023okok": {
             "address": "18145 Old Rangeline Rd, Shawnee, OK 74801, USA",
@@ -89426,7 +89552,8 @@
                 "frc6809",
                 "frc8711",
                 "frc9007"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023oktu": {
             "address": "4145 E 21st St, Tulsa, OK 74114, USA",
@@ -89517,7 +89644,8 @@
                 "frc9007",
                 "frc9244",
                 "frc935"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onbar": {
             "address": "1 Georgian Dr, Barrie, ON L4M 3X9, Canada",
@@ -89599,7 +89727,8 @@
                 "frc865",
                 "frc8731",
                 "frc9098"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023oncmp": {
             "address": null,
@@ -89650,7 +89779,8 @@
                 "frc4039",
                 "frc4476",
                 "frc772"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onham": {
             "address": "1280 Main St W, Hamilton, ON L8S 4L8, Canada",
@@ -89740,7 +89870,8 @@
                 "frc8884",
                 "frc9062",
                 "frc9262"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onlon": {
             "address": "1151 Richmond St, London, ON N6A 3K7, Canada",
@@ -89827,7 +89958,8 @@
                 "frc8884",
                 "frc9113",
                 "frc9263"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onnew": {
             "address": "100 Eagle St W, Newmarket, ON L3Y 1J4, Canada",
@@ -89915,7 +90047,8 @@
                 "frc8850",
                 "frc9113",
                 "frc9127"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onnob": {
             "address": "Nipissing University, 100 College Dr, North Bay, ON P1B 8L7, Canada",
@@ -89997,7 +90130,8 @@
                 "frc8729",
                 "frc8731",
                 "frc9127"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023ontor": {
             "address": "Arboretum Blvd, Etobicoke, ON M9W 5L7, Canada",
@@ -90079,7 +90213,8 @@
                 "frc8574",
                 "frc8729",
                 "frc8850"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onwat": {
             "address": "200 University Ave W, Waterloo, ON N2L 3G1, Canada",
@@ -90157,7 +90292,8 @@
                 "frc8765",
                 "frc9062",
                 "frc9098"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023onwin": {
             "address": "2555 College Ave, Windsor, ON N9B 3P4, Canada",
@@ -90233,7 +90369,8 @@
                 "frc8081",
                 "frc8574",
                 "frc8789"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023orore": {
             "address": "1306 12th St, Oregon City, OR 97045, USA",
@@ -90319,7 +90456,8 @@
                 "frc847",
                 "frc955",
                 "frc997"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023orsal": {
             "address": "LB Day Amphitheatre, 2330 17th St NE, Salem, OR 97303, USA",
@@ -90394,7 +90532,8 @@
                 "frc955",
                 "frc957",
                 "frc997"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023orwil": {
             "address": "6800 SW Wilsonville Rd, Wilsonville, OR 97070, USA",
@@ -90470,7 +90609,8 @@
                 "frc753",
                 "frc8532",
                 "frc957"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023paben": {
             "address": "4319 Hulmeville Rd, Bensalem, PA 19020, USA",
@@ -90549,7 +90689,8 @@
                 "frc9027",
                 "frc9094",
                 "frc9100"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023paca": {
             "address": "1000 Fort Duquesne Blvd, Pittsburgh, PA 15222, USA",
@@ -90640,7 +90781,8 @@
                 "frc9022",
                 "frc9139",
                 "frc930"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023pahat": {
             "address": "899 Horsham Rd, Horsham, PA 19044, USA",
@@ -90724,7 +90866,8 @@
                 "frc7110",
                 "frc7414",
                 "frc816"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023paphi": {
             "address": "500 W Willow Grove Ave, Philadelphia, PA 19118, USA",
@@ -90805,7 +90948,8 @@
                 "frc9014",
                 "frc9027",
                 "frc9094"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023pncmp": {
             "address": "526 5th St, Cheney, WA 99004, USA",
@@ -90860,7 +91004,8 @@
                 "frc4131",
                 "frc6831",
                 "frc7034"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023qcmo": {
             "address": "6000 rue du Colis\u00e9e, Trois-Rivi\u00e8res, QC G9B 0Y7, Canada",
@@ -90953,7 +91098,8 @@
                 "frc9220",
                 "frc9234",
                 "frc9268"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023rinsc": {
             "address": "137 Anan Wade Rd, North Scituate, RI 02857, USA",
@@ -91031,7 +91177,8 @@
                 "frc8544",
                 "frc8626",
                 "frc9286"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023scand": {
             "address": "3027 Martin Luther King Jr Blvd, Anderson, SC 29625, USA",
@@ -91102,7 +91249,8 @@
                 "frc7085",
                 "frc8575",
                 "frc9315"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023schar": {
             "address": "300 E College Ave, Hartsville, SC 29550, USA",
@@ -91173,7 +91321,8 @@
                 "frc8137",
                 "frc8575",
                 "frc9315"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023tnkn": {
             "address": "500 Howard Baker Jr. Ave, Knoxville, TN 37915, USA",
@@ -91258,7 +91407,8 @@
                 "frc8214",
                 "frc8841",
                 "frc9152"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023tuhc": {
             "address": null,
@@ -91351,7 +91501,8 @@
                 "frc9201",
                 "frc9221",
                 "frc9247"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023tuis": {
             "address": null,
@@ -91438,7 +91589,8 @@
                 "frc9232",
                 "frc9247",
                 "frc9265"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023tuis2": {
             "address": null,
@@ -91455,8 +91607,8 @@
             "gmaps_place_id": null,
             "gmaps_url": null,
             "key": "2023tuis2",
-            "lat": 41.10892745165399,
-            "lng": 29.007564958008498,
+            "lat": 41.110193472305795,
+            "lng": 29.006892441361817,
             "location_name": null,
             "name": "Bosphorus Regional",
             "parent_event_key": null,
@@ -91522,7 +91674,8 @@
                 "frc9132",
                 "frc9233",
                 "frc9264"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023tuis3": {
             "address": "Zafer Sakarya Caddesi No:2 Yeni Fuar Alan\u0131, Zafer, 35410 Gaziemir/\u0130zmir, Turkey",
@@ -91564,7 +91717,8 @@
                 "frc8799",
                 "frc8881",
                 "frc9201"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txama": {
             "address": "401 S Buchanan St, Amarillo, TX 79101, USA",
@@ -91658,7 +91812,8 @@
                 "frc9080",
                 "frc9105",
                 "frc9136"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txbel": {
             "address": "301 W Loop 121, Belton, TX 76513, USA",
@@ -91740,7 +91895,8 @@
                 "frc9121",
                 "frc9140",
                 "frc9311"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txcha": {
             "address": "1100 Sheldon Rd, Channelview, TX 77530, USA",
@@ -91825,7 +91981,8 @@
                 "frc9181",
                 "frc9289",
                 "frc9307"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txcle": {
             "address": "Houston, TX, USA",
@@ -91898,7 +92055,8 @@
                 "frc9137",
                 "frc9181",
                 "frc9307"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txcmp": {
             "address": "1001 Avenida De Las Americas, Houston, TX 77010, USA",
@@ -91920,8 +92078,8 @@
             "gmaps_place_id": "ChIJgw3vTiK_QIYRsMwBp668_Lo",
             "gmaps_url": "https://maps.google.com/?q=1001+Avenida+De+Las+Americas,+Houston,+TX+77010,+USA&ftid=0x8640bf224eef0d83:0xbafcbcaea701ccb0",
             "key": "2023txcmp",
-            "lat": 29.752069446381892,
-            "lng": -95.35810198454035,
+            "lat": 29.749130759995328,
+            "lng": -95.35768952011259,
             "location_name": "1001 Avenida De Las Americas",
             "name": "FIRST In Texas District Championship presented by Phillips 66",
             "parent_event_key": null,
@@ -91944,7 +92102,8 @@
                 "frc3847",
                 "frc5414",
                 "frc5417"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txdal": {
             "address": "300 Rivercrest Blvd, Allen, TX 75002, USA",
@@ -92024,7 +92183,8 @@
                 "frc9069",
                 "frc9088",
                 "frc9156"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txfor": {
             "address": "4501 Bridge St, Fort Worth, TX 76103, USA",
@@ -92108,7 +92268,8 @@
                 "frc9128",
                 "frc9156",
                 "frc9299"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txhou": {
             "address": "1865 Aldine Bender Rd, Houston, TX 77032, USA",
@@ -92195,7 +92356,8 @@
                 "frc8827",
                 "frc9121",
                 "frc9137"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txsan": {
             "address": "3201 E Houston St, San Antonio, TX 78219, USA",
@@ -92287,7 +92449,8 @@
                 "frc9051",
                 "frc9054",
                 "frc9140"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023txwac": {
             "address": "4601 Bosque Blvd, Waco, TX 76710, USA",
@@ -92377,7 +92540,8 @@
                 "frc9128",
                 "frc9289",
                 "frc9311"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023utwv": {
             "address": "3200 Decker Lake Dr, West Valley City, UT 84119, USA",
@@ -92464,7 +92628,8 @@
                 "frc9037",
                 "frc9044",
                 "frc9138"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023vaale": {
             "address": "7630 Telegraph Rd, Alexandria, VA 22315, USA",
@@ -92548,7 +92713,8 @@
                 "frc9033",
                 "frc9072",
                 "frc9235"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023vabla": {
             "address": "3401 Bruin Ln, Blacksburg, VA 24060, USA",
@@ -92626,7 +92792,8 @@
                 "frc9033",
                 "frc9235",
                 "frc977"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023vagle": {
             "address": "4801 Twin Hickory Rd, Glen Allen, VA 23059, USA",
@@ -92709,7 +92876,8 @@
                 "frc8590",
                 "frc9003",
                 "frc977"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023vapor": {
             "address": "4301 Cedar Ln, Portsmouth, VA 23703, USA",
@@ -92782,7 +92950,8 @@
                 "frc8326",
                 "frc8622",
                 "frc9214"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023waahs": {
             "address": "1302 8th St NE, Auburn, WA 98002, USA",
@@ -92857,7 +93026,8 @@
                 "frc8303",
                 "frc8386",
                 "frc8896"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wabon": {
             "address": "10920 199th Ave Ct E, Bonney Lake, WA 98391, USA",
@@ -92936,7 +93106,8 @@
                 "frc8896",
                 "frc9023",
                 "frc948"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wasam": {
             "address": "100 140th Ave SE, Bellevue, WA 98005, USA",
@@ -93016,7 +93187,8 @@
                 "frc9036",
                 "frc948",
                 "frc949"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wasno": {
             "address": "7401 144th Pl SE, Snohomish, WA 98296, USA",
@@ -93102,7 +93274,8 @@
                 "frc8248",
                 "frc9036",
                 "frc949"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wayak": {
             "address": "Modern Living Building, 1301 S Fair Ave, Yakima, WA 98901, USA",
@@ -93173,7 +93346,8 @@
                 "frc7461",
                 "frc8532",
                 "frc955"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023week0": {
             "address": "194 Lund Rd, Nashua, NH 03060, USA",
@@ -93246,7 +93420,8 @@
                 "frc811",
                 "frc8724",
                 "frc9101"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wila": {
             "address": "300 Harborview Plaza, La Crosse, WI 54601, USA",
@@ -93263,8 +93438,8 @@
             "gmaps_place_id": "ChIJYUJP46VV-YcRSS3fU11juoo",
             "gmaps_url": "https://maps.google.com/?cid=9996411575392480585",
             "key": "2023wila",
-            "lat": 43.81189973576117,
-            "lng": -91.25526691956533,
+            "lat": 43.81114157630717,
+            "lng": -91.25473985789411,
             "location_name": "La Crosse Center",
             "name": "Seven Rivers Regional",
             "parent_event_key": null,
@@ -93343,7 +93518,8 @@
                 "frc8744",
                 "frc8782",
                 "frc9149"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wimi": {
             "address": "400 W Kilbourn Ave, Milwaukee, WI 53203, USA",
@@ -93433,7 +93609,8 @@
                 "frc8847",
                 "frc93",
                 "frc930"
-            ]
+            ],
+            "is_cmp": false
         },
         "2023wisr": {
             "address": "1225 N Water St, Sparta, WI 54656, USA",
@@ -93466,7 +93643,8 @@
             "website": "https://www.7rrc.org/week-0-scrimmage",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         },
         "2023wiwz": {
             "address": "W220N6151 Town Line Rd, Sussex, WI 53089, USA",
@@ -93508,7 +93686,8 @@
             "website": "https://www.chargerrobotics.org/sussex-scrimmage",
             "week": null,
             "year": 2023,
-            "teams": []
+            "teams": [],
+            "is_cmp": false
         }
     }
 }

@@ -53,3 +53,9 @@ html, body {
 .ui-menu {
     min-height: 0;
 }
+
+label.mdl-switch + p {
+    color: gray;
+    font-size: smaller;
+    font-style: italic;
+}
