@@ -1,12 +1,14 @@
 let APP = {
-    mobile: false,
+    year: 2023,
+    records: [2023, 2022, 2020, 2019],
     markers: {
-        red: "https://franspaco.com/resources/red_marker.png",
-        green: "https://franspaco.com/resources/green_marker.png",
+        red: "markers/red_marker.png",
+        green: "markers/green_marker.png",
+        first: "markers/first_marker.png",
     },
     team_markers: [],
     event_markers: [],
-    year: 2023,
+    champ_markers: [],
     legends: {
         l_rookie: "#7C008F",
         l_0: "#0000FF",
@@ -16,8 +18,10 @@ let APP = {
         l_4: "#00CC33",
         l_5: "#00FF00",
         l_event: "#FF0000",
+        l_champ: "#FF6600",
     },
-    records: [2023, 2022, 2020, 2019],
+    click_mode: false,
+    mobile: false,
 };
 
 async function initMap() {
@@ -41,17 +45,29 @@ APP.tba_link = function (type, key) {
 APP.create_marker_listeners = function (marker, element, type, key) {
     if (!APP.mobile) {
         marker.addListener("click", () => {
-            APP.tba_link(type, key);
+            element.visible = !element.visible;
         });
         marker.addListener("mouseover", () => {
-            APP.show_edges(element);
+            if (!element.visible) {
+                APP.show_edges(element);
+            }
         });
         marker.addListener("mouseout", () => {
-            APP.hide_edges(element);
+            if (!element.visible) {
+                APP.hide_edges(element);
+            }
+        });
+        marker.addListener("contextmenu", () => {
+            APP.tba_link(type, key);
         });
     } else {
         marker.addListener("click", () => {
-            APP.toggle_edges(element);
+            element.visible = !element.visible;
+            if (element.visible) {
+                APP.show_edges(element);
+            } else {
+                APP.hide_edges(element);
+            }
         });
         marker.addListener("dblclick", () => {
             APP.tba_link(type, key);
@@ -59,23 +75,33 @@ APP.create_marker_listeners = function (marker, element, type, key) {
     }
 }.bind(APP);
 
-APP.toggle_edges = function (element) {
-    element.edges.forEach((item) => {
-        item.setVisible(!item.getVisible());
-    });
-}.bind(APP);
-
 APP.show_edges = function (element) {
     element.edges.forEach((item) => {
-        item.setVisible(true);
+        item.AddViewer();
+        //item.setVisible(true);
     });
 }.bind(APP);
 
 APP.hide_edges = function (element) {
     element.edges.forEach((item) => {
-        item.setVisible(false);
+        item.RemoveViewer();
+        // item.setVisible(false);
     });
 }.bind(APP);
+
+function AddViewer() {
+    this.viewer_count++;
+    console.log(this.name, this.viewer_count);
+    this.setVisible(true);
+}
+
+function RemoveViewer() {
+    this.viewer_count--;
+    console.log(this.name, this.viewer_count);
+    if (this.viewer_count === 0) {
+        this.setVisible(false);
+    }
+}
 
 APP.toggle_markers = function (array, value) {
     array.forEach((element) => {
@@ -169,23 +195,38 @@ APP.init = async function () {
                 console.log(`Ignoring event: ${key}`);
                 continue;
             }
+            let marker_icon = APP.markers.red;
+            let title = `${element.name} (week ${element.week + 1})`;
 
+            if (element.is_cmp) {
+                marker_icon = APP.markers.first;
+                title = `${element.name} (${element.start_date})`;
+            }
+
+            element.visible = false;
             element.edges = [];
-            element.edges_visible = false;
             var marker = new google.maps.Marker({
                 position: {
                     lat: Number(element.lat),
                     lng: Number(element.lng),
                 },
-                icon: APP.markers.red,
+                icon: marker_icon,
                 map: this.map,
-                title: `${element.name} (week ${element.week + 1})`,
+                title: title,
             });
-            this.event_markers.push(marker);
+
+            // Make sure championships appear on top!
+            if (element.is_cmp) {
+                marker.setZIndex(google.maps.Marker.MAX_ZINDEX);
+                this.champ_markers.push(marker);
+            } else {
+                this.event_markers.push(marker);
+            }
+
             APP.create_marker_listeners(marker, element, "event", key);
         }
     }
-    
+
     APP.team_autocomplete = [];
     // Make Teams
     for (const key in data.teams) {
@@ -200,6 +241,7 @@ APP.init = async function () {
                 value: key,
                 label: `${element.team_number} | ${element.nickname}`,
             });
+            element.visible = false;
             element.edges = [];
             var marker = new google.maps.Marker({
                 position: {
@@ -247,6 +289,11 @@ APP.init = async function () {
                     strokeWeight: 1,
                     map: APP.map,
                 });
+                // This is a custom thing
+                edge.name = `${key}-${event}`;
+                edge.viewer_count = 0;
+                edge.AddViewer = AddViewer;
+                edge.RemoveViewer = RemoveViewer;
                 edge.setVisible(false);
                 data.events[event].edges.push(edge);
                 element.edges.push(edge);
@@ -258,6 +305,7 @@ APP.init = async function () {
     this.toggles = {
         teams: $("#switch-teams"),
         events: $("#switch-regionals"),
+        champs: $("#switch-championships"),
         tba: $("#switch-tba"),
     };
 
@@ -268,6 +316,10 @@ APP.init = async function () {
     // Event toggle listener
     this.toggles.events.change(function () {
         APP.toggle_markers(APP.event_markers, this.checked);
+    });
+    // Championship toggle listener
+    this.toggles.champs.change(function () {
+        APP.toggle_markers(APP.champ_markers, this.checked);
     });
 
     this.goto = function (key) {
