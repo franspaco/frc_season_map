@@ -9,12 +9,11 @@ InfoList = List[Dict[str, str]]
 
 
 class TBAHelper:
-    api = 'https://www.thebluealliance.com/api/v3/'
+    api = "https://www.thebluealliance.com/api/v3/"
 
     def __init__(self, TbaApiKey: str, cache_path: str):
-        self.session = CachedSession(
-            cache_path, backend='filesystem', serializer='json')
-        self.session.headers['X-TBA-Auth-Key'] = TbaApiKey
+        self.session = CachedSession(cache_path, backend="filesystem", serializer="json")
+        self.session.headers["X-TBA-Auth-Key"] = TbaApiKey
         self.data_cache = {}
 
     def __get(self, path: str):
@@ -25,7 +24,7 @@ class TBAHelper:
         return self.__get(path).json()
 
     def get_events(self, year: int) -> InfoDict:
-        return {event['key']: event for event in self.__get(f"events/{year}")}
+        return {event["key"]: event for event in self.__get(f"events/{year}")}
 
     def get_event_keys(self, year: int) -> KeyList:
         return self.__get(f"events/{year}/keys")
@@ -34,7 +33,7 @@ class TBAHelper:
         return self.__get(f"event/{event_key}/teams/keys")
 
     def get_teams_page(self, page: int) -> InfoDict:
-        return {team['key']: team for team in self.__get(f"teams/{page}")}
+        return {team["key"]: team for team in self.__get(f"teams/{page}")}
 
     def get_team_keys_page(self, page: int) -> KeyList:
         return self.__get(f"teams/{page}/keys")
@@ -67,7 +66,7 @@ class TBAHelper:
         for event in events:
             teams.update(self.get_event_team_keys(event))
         return sorted(list(teams))
-    
+
     def get_team_events(self, year: int) -> Dict[str, List[str]]:
         events = self.get_event_keys(year)
         teams = defaultdict(list)
@@ -75,4 +74,3 @@ class TBAHelper:
             for team in self.get_event_team_keys(event):
                 teams[team].append(event)
         return dict(teams)
-
