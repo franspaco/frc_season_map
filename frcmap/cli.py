@@ -134,6 +134,7 @@ def run(root_path):
     frcmap = FRCMap(
         TbaApiKey=api_keys.tba_key,
         GMapsApiKey=api_keys.gmaps_key,
+        FirstToken=api_keys.first_token,
         year=args.year,
         cache=cache,
         archive=archive_path,

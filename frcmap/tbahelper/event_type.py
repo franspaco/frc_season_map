@@ -1,5 +1,5 @@
 # From https://github.com/the-blue-alliance/the-blue-alliance/blob/master/consts/event_type.py#L2
-class EventType:
+class EventType(object):
     REGIONAL = 0
     DISTRICT = 1
     DISTRICT_CMP = 2
@@ -13,6 +13,68 @@ class EventType:
     PRESEASON = 100
     UNLABLED = -1
 
+    type_names = {
+        REGIONAL: "Regional",
+        DISTRICT: "District",
+        DISTRICT_CMP_DIVISION: "District Championship Division",
+        DISTRICT_CMP: "District Championship",
+        CMP_DIVISION: "Championship Division",
+        CMP_FINALS: "Championship Finals",
+        FOC: "Festival of Champions",
+        OFFSEASON: "Offseason",
+        PRESEASON: "Preseason",
+        REMOTE: "Remote",
+        UNLABLED: "--",
+    }
+
+    short_type_names = {
+        REGIONAL: "Regional",
+        DISTRICT: "District",
+        DISTRICT_CMP_DIVISION: "District Championship Division",
+        DISTRICT_CMP: "District Championship",
+        CMP_DIVISION: "Division",
+        CMP_FINALS: "Championship",
+        FOC: "FoC",
+        OFFSEASON: "Offseason",
+        PRESEASON: "Preseason",
+        REMOTE: "Remote",
+        UNLABLED: "--",
+    }
+
+    DISTRICT_EVENT_TYPES = {
+        DISTRICT,
+        DISTRICT_CMP_DIVISION,
+        DISTRICT_CMP,
+    }
+
+    NON_CMP_EVENT_TYPES = {
+        REGIONAL,
+        DISTRICT,
+        DISTRICT_CMP_DIVISION,
+        DISTRICT_CMP,
+        REMOTE,
+    }
+
+    CMP_EVENT_TYPES = {
+        CMP_DIVISION,
+        CMP_FINALS,
+    }
+
+    SEASON_EVENT_TYPES = {
+        REGIONAL,
+        DISTRICT,
+        DISTRICT_CMP_DIVISION,
+        DISTRICT_CMP,
+        CMP_DIVISION,
+        CMP_FINALS,
+        FOC,
+        REMOTE,
+    }
+
     @staticmethod
     def isChampionship(val: int):
-        return val == EventType.CMP_DIVISION or val == EventType.CMP_FINALS
+        return val in EventType.CMP_EVENT_TYPES
+
+    @staticmethod
+    def isOfficial(val: int):
+        return val in EventType.SEASON_EVENT_TYPES

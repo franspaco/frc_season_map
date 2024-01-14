@@ -26,6 +26,7 @@ html, body {
 
 .side-section {
     margin-left: 15px;
+    margin-right: 15px;
 }
 
 .side-section > p:first-child {
