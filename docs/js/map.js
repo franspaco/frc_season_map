@@ -1,6 +1,6 @@
 let APP = {
-    year: 2023,
-    records: [2023, 2022, 2020, 2019],
+    year: 2024,
+    records: [2024, 2023, 2022, 2020, 2019],
     markers: {
         red: "markers/red_marker.png",
         green: "markers/green_marker.png",
@@ -191,6 +191,9 @@ APP.init = async function () {
     for (const key in data.events) {
         if (data.events.hasOwnProperty(key)) {
             const element = data.events[key];
+            element.visible = false;
+            element.edges = [];
+
             if (element.ignore === true) {
                 console.log(`Ignoring event: ${key}`);
                 continue;
@@ -203,8 +206,6 @@ APP.init = async function () {
                 title = `${element.name} (${element.start_date})`;
             }
 
-            element.visible = false;
-            element.edges = [];
             var marker = new google.maps.Marker({
                 position: {
                     lat: Number(element.lat),
@@ -298,7 +299,6 @@ APP.init = async function () {
                 edge.viewer_count = 0;
                 edge.AddViewer = AddViewer;
                 edge.RemoveViewer = RemoveViewer;
-
                 // Add to event & team
                 data.events[event].edges.push(edge);
                 element.edges.push(edge);
@@ -315,15 +315,18 @@ APP.init = async function () {
     };
 
     // Team toggle listener
-    this.toggles.teams.change(function () {
+    this.toggles.teams.on("change", function () {
+        console.log("Toggling team markers!");
         APP.toggle_markers(APP.team_markers, this.checked);
     });
     // Event toggle listener
-    this.toggles.events.change(function () {
+    this.toggles.events.on("change", function () {
+        console.log("Toggling event markers!");
         APP.toggle_markers(APP.event_markers, this.checked);
     });
     // Championship toggle listener
-    this.toggles.champs.change(function () {
+    this.toggles.champs.on("change", function () {
+        console.log("Toggling champ markers!");
         APP.toggle_markers(APP.champ_markers, this.checked);
     });
 

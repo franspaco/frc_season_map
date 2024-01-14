@@ -3,6 +3,7 @@ import logging
 import os
 from .tbahelper import TBAHelper, EventType
 from .frcgeocoder import FRCGeocoder, LocationDict
+from .firstapi import FirstAPI
 
 log = logging.getLogger(__name__)
 
@@ -13,6 +14,7 @@ class FRCMap:
         *,
         TbaApiKey: str,
         GMapsApiKey: str,
+        FirstToken: str,
         year: int,
         cache: str,
         archive: LocationDict,
@@ -20,8 +22,15 @@ class FRCMap:
         events: LocationDict,
     ):
         self.year = year
-        self.geocoder = FRCGeocoder(GMapsApiKey, archive, teams, events)
-        self.tba = TBAHelper(TbaApiKey=TbaApiKey, cache_path=cache)
+        self.tba = TBAHelper(tba_api_key=TbaApiKey, cache_path=cache)
+        self.first = FirstAPI(first_api_token=FirstToken, cache_path=cache)
+        self.geocoder = FRCGeocoder(
+            gmaps_api_key=GMapsApiKey,
+            archive_path=archive,
+            teams=teams,
+            events=events,
+            first_api=self.first,
+        )
         self.data = None
 
     def generate(self) -> None:
@@ -49,10 +58,6 @@ class FRCMap:
 
         for ekey, event in events.items():
             event["teams"] = self.tba.get_event_team_keys(ekey)
-
-        # Tag championships
-        for _, v in events.items():
-            v["is_cmp"] = EventType.isChampionship(v["event_type"])
 
         self.data = {
             "teams": team_data,
