@@ -1,6 +1,6 @@
 # FIRST Robotics Challenge (FRC) Season Map
 
-_Updated for 2023_
+_Updated for 2024_
 
 [CLICK HERE TO VIEW ON frcmap.com](http://frcmap.com)
 
@@ -13,21 +13,26 @@ A Google Maps API key is required to get geolocations from the teams' addresses.
 A TBA api key is required to get team data.
 
 ### Placement Errors
+
 If a team is misplaced or missing and you have the correct location info please submit an issue with the correct data. (and preferably some statement of affiliation to corroborate the info)
 
-You can also submit a pull request adding your team's correct location in `locations/teams.toml`. 
+You can also submit a pull request adding your team's correct location in `locations/teams.toml`.
 
 ### Contribution
+
 I'm open to suggestions and contributions! Let me know if you have any ideas to make this better.
 
 ### Setup
+
 To use the data collector, create the file `api_keys.py` and save it with the contents:
+
 ```python
 tba_key = '<YOUR KEY HERE>'
 gmaps_key = '<YOUR KEY HERE>'
 ```
 
 ### Running
+
 To run just execute: `make_map.py`
 
 This will:
@@ -38,6 +43,3 @@ This will:
 4. Filter teams, leaving only those registered for events in the current year.
 5. Cross reference teams and events.
 6. Export `docs/data/season_<year>.json`
-
-
-
