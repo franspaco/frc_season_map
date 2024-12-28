@@ -171,18 +171,34 @@ APP.init = async function () {
     let data = await $.getJSON(`data/season_${APP.year}.json`, () => {});
     APP.data = data;
 
-    let locations = await $.getJSON(
+    let locations_firstmap = await $.getJSON(
         "https://firstmap.github.io/data/custom_locations.json"
     );
 
-    for (const key in locations) {
-        if (locations.hasOwnProperty(key)) {
-            const element = locations[key];
+    for (const key in locations_firstmap) {
+        if (locations_firstmap.hasOwnProperty(key)) {
+            const element = locations_firstmap[key];
             let data_key = "frc" + String(key);
             if (data.teams.hasOwnProperty(data_key)) {
                 data.teams[data_key].lat = element.lat;
                 data.teams[data_key].lng = element.lng;
                 // console.log("Updated: " + data_key);
+            }
+        }
+    }
+
+    let locations_frcmap = await $.getJSON(
+        "https://raw.githubusercontent.com/franspaco/frc_season_map/refs/heads/master/locations/teams.json"
+    );
+
+    for (const key in locations_frcmap) {
+        if (locations_frcmap.hasOwnProperty(key)) {
+            const element = locations_frcmap[key];
+            let data_key = String(key);
+            if (data.teams.hasOwnProperty(data_key)) {
+                data.teams[data_key].lat = element.lat;
+                data.teams[data_key].lng = element.lng;
+                console.log(`Updated '${data_key}' from GitHub data.`);
             }
         }
     }
