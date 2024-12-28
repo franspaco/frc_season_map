@@ -96,7 +96,7 @@ class FRCGeocoder:
 
     def __read_event_archive(self):
         file = Path(self.archive_path) / "all_event_locations.json"
-        if file.exists() and file.is_fifo():
+        if file.exists() and file.is_file():
             with open(file, encoding="utf8") as f:
                 self.event_archive = json.load(f)
         else:
@@ -105,13 +105,13 @@ class FRCGeocoder:
             )
             self.event_archive = {}
 
-    def __save_team_archive(self, teams: InfoDict):
+    def __save_team_archive(self, teams: InfoDict, year: int):
         data = {
             k0: {k1: v1 for k1, v1 in v0.items() if k1 in ["lat", "lng"]}
             for k0, v0 in teams.items()
             if not self.__noloc(v0)
         }
-        name = f"all_team_locations_{datetime.datetime.now().year}.json"
+        name = f"all_team_locations_{year}.json"
         with open(os.path.join(self.archive_path, name), "w", encoding="utf8") as f:
             json.dump(data, f)
 
@@ -180,7 +180,7 @@ class FRCGeocoder:
             else:
                 ulocs[location_tuple(obj)] = key
 
-    def populate_team_locations(self, teams: InfoDict) -> None:
+    def populate_team_locations(self, teams: InfoDict, year: int) -> None:
         log.info("Geolocating teams.")
         # Find locations
         for key, team in teams.items():
@@ -197,7 +197,7 @@ class FRCGeocoder:
 
         self.__dedup_locations(teams, "Team")
 
-        self.__save_team_archive(teams)
+        self.__save_team_archive(teams, year)
         log.info("Geolocating teams finished.")
 
     def populate_event_locations(self, events: InfoDict) -> None:

@@ -2,8 +2,6 @@ import argparse
 import datetime
 import json
 import os
-import re
-import tomllib
 import logging
 
 from .frcmap import FRCMap
@@ -55,7 +53,7 @@ def run(root_path):
         "--team-locations",
         dest="teams",
         help="Path to TOML file with team manual location data.",
-        default=relative_path("locations/teams.toml"),
+        default=relative_path("locations/teams.json"),
     )
 
     parser.add_argument(
@@ -63,7 +61,7 @@ def run(root_path):
         "--event-locations",
         dest="events",
         help="Path to TOML file with event manual location data.",
-        default=relative_path("locations/events.toml"),
+        default=relative_path("locations/events.json"),
     )
 
     parser.add_argument(
@@ -104,13 +102,15 @@ def run(root_path):
     if os.path.exists(args.teams):
         log.info(f"Loading team locations from:  {args.teams}")
         with open(args.teams, "rb") as f:
-            teams = tomllib.load(f)
+            teams: LocationDict = json.load(f)
+            teams.pop("_comment", None)
 
     events: LocationDict = {}
     if os.path.exists(args.events):
         log.info(f"Loading event locations from: {args.events}")
         with open(args.events, "rb") as f:
-            events = tomllib.load(f)
+            events: LocationDict = json.load(f)
+            events.pop("_comment", None)
 
     # Make sure archive path exists.
     archive_path = args.archive

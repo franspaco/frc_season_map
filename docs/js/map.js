@@ -1,6 +1,6 @@
 let APP = {
-    year: 2024,
-    records: [2024, 2023, 2022, 2020, 2019],
+    year: 2025,
+    records: [2025, 2024, 2023, 2022, 2020, 2019],
     markers: {
         red: "markers/red_marker.png",
         green: "markers/green_marker.png",

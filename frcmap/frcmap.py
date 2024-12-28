@@ -46,15 +46,19 @@ class FRCMap:
         active = self.tba.get_active_teams(self.year)
         log.info(f"Found {len(active)} active teams.")
 
-        self.geocoder.populate_team_locations(teams)
+        self.geocoder.populate_team_locations(teams, self.year)
         self.geocoder.populate_event_locations(events)
 
         team_events = self.tba.get_team_events(self.year)
 
         team_data = dict()
         for tkey in active:
-            team_data[tkey] = teams[tkey]
-            team_data[tkey]["events"] = team_events[tkey]
+            try:
+                team_data[tkey] = teams[tkey]
+                team_data[tkey]["events"] = team_events[tkey]
+            except KeyError as err:
+                log.error(f"Failed to find key '{tkey}' in team list.")
+                raise Exception(f"Failed to find key '{tkey}' in team list.") from err
 
         for ekey, event in events.items():
             event["teams"] = self.tba.get_event_team_keys(ekey)
