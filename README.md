@@ -22,6 +22,21 @@ You can also submit a pull request adding your team's correct location in `locat
 
 I'm open to suggestions and contributions! Let me know if you have any ideas to make this better.
 
+#### JSON Validation
+
+This repository includes automatic JSON validation to prevent syntax errors that can break the map application. 
+
+- All JSON files are automatically validated when you create a pull request or push to the main branch
+- You can manually validate JSON files by running: `python3 validate_json.py`
+- The validation script checks all `.json` files in the repository (excluding `.git` directory)
+- If you're adding or modifying JSON data, make sure to test it locally first
+
+**Common JSON errors to avoid:**
+- Missing commas between objects or array elements
+- Trailing commas (not allowed in JSON)
+- Unclosed brackets or braces
+- Invalid escape sequences in strings
+
 ### Setup
 
 To use the data collector, create the file `api_keys.py` and save it with the contents:
