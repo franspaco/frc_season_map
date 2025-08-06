@@ -1,0 +1,55 @@
+name: JSON Validation
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - '**.json'
+      - 'validate_json.py'
+      - '.github/workflows/json-validation.yml'
+  pull_request:
+    branches: [ master, main ]
+    paths:
+      - '**.json'
+      - 'validate_json.py'
+      - '.github/workflows/json-validation.yml'
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Validate JSON files with Python script
+      run: |
+        echo "🔍 Running JSON validation..."
+        python3 validate_json.py
+        
+    - name: Validate JSON files with built-in tools (backup check)
+      run: |
+        echo ""
+        echo "🔧 Running backup validation with json.tool..."
+        failed_files=()
+        
+        while IFS= read -r -d '' file; do
+          if ! python3 -m json.tool "$file" > /dev/null 2>&1; then
+            echo "❌ Invalid JSON detected: $file"
+            python3 -m json.tool "$file" 2>&1 | sed 's/^/   /'
+            failed_files+=("$file")
+          fi
+        done < <(find . -name "*.json" -not -path "./.git/*" -print0)
+        
+        if [ ${#failed_files[@]} -ne 0 ]; then
+          echo ""
+          echo "💥 Backup validation found ${#failed_files[@]} invalid JSON file(s)!"
+          exit 1
+        else
+          echo "✅ Backup validation passed!"
+        fi
