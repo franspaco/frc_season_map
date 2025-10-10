@@ -25,11 +25,11 @@ def run(root_path):
         log.critical("Api Keys file not found, creating 'api_keys.py'. Add your keys there.")
         with open("api_keys.py", "w") as f:
             f.write(
-                """
-                # Fill in with your API keys:
-                tba_key = '<KEY>'
-                gmaps_key = '<KEY>'
-                """
+                """# Fill in with your API keys:
+tba_key = '<KEY>'
+gmaps_key = '<KEY>'
+first_token = '<KEY>'
+"""
             )
             exit()
 
