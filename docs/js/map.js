@@ -1,6 +1,6 @@
 let APP = {
-    year: 2025,
-    records: [2025, 2024, 2023, 2022, 2020, 2019],
+    year: 2026,
+    records: [2026, 2025, 2024, 2023, 2022, 2020, 2019],
     markers: {
         red: "markers/red_marker.png",
         green: "markers/green_marker.png",
@@ -115,17 +115,17 @@ APP.getMarker = function (rookie_year) {
         return "markers/rookie.png";
     }
     switch (true) {
-        case rookie_year < 2000:
-            return "markers/0.png"; // #0000FF
         case rookie_year < 2005:
-            return "markers/1.png"; // #0033CC
+            return "markers/0.png"; // #0000FF
         case rookie_year < 2010:
-            return "markers/2.png"; // #006699
+            return "markers/1.png"; // #0033CC
         case rookie_year < 2015:
-            return "markers/3.png"; // #009966
+            return "markers/2.png"; // #006699
         case rookie_year < 2020:
-            return "markers/4.png"; // #00CC33
+            return "markers/3.png"; // #009966
         case rookie_year < 2025:
+            return "markers/4.png"; // #00CC33
+        case rookie_year < 2030:
             return "markers/5.png"; // #00FF00
     }
 };

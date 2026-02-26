@@ -1,6 +1,6 @@
 # FIRST Robotics Challenge (FRC) Season Map
 
-_Updated for 2025_
+_Updated for 2026_
 
 [CLICK HERE TO VIEW ON frcmap.com](http://frcmap.com)
 

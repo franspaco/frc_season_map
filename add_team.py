@@ -26,11 +26,13 @@ new_team = (
     },
 )
 
+
 def team_key_as_int(team):
     return int(team[0][3:])
 
+
 with open(args.file, "r") as f:
-    teams = [(k,v) for k,v in json.load(f, object_pairs_hook=OrderedDict).items()]
+    teams = [(k, v) for k, v in json.load(f, object_pairs_hook=OrderedDict).items()]
 
 bisect.insort(teams, new_team, key=team_key_as_int)
 

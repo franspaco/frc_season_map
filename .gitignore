@@ -1,11 +1,18 @@
 .vscode/
 .vscode/*
+.venv/
 __pycache__/
 data/api_keys.py
 data/cache
 data/cache/*
 api_keys.py
+api-keys.toml
+debug/
 
 # Cache
 cache/*
 !cache/.gitkeep
+
+# Added by cargo
+
+/target

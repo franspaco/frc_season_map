@@ -1,0 +1,23 @@
+[package]
+name = "frc_season_map"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1"
+base64 = "0.22"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive"] }
+env_logger = "0.11"
+http-cache-reqwest = "0.15"
+log = "0.4"
+rand = "0.9"
+rand_distr = "0.5"
+regex = "1"
+reqwest = { version = "0.12", features = ["json"] }
+reqwest-middleware = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+toml = "0.8"
+urlencoding = "2"
