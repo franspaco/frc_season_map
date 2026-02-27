@@ -133,7 +133,7 @@ bother me if I'm too late.
 <summary>Why is X event/team missing?</summary>
 
 I try to capture everything, but every year something in the API changes and I
-end up missing comething. Please file an issue if you find something wrong.
+end up missing something. Please file an issue if you find something wrong.
 
 </details>
 
