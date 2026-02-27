@@ -143,3 +143,4 @@ end up missing something. Please file an issue if you find something wrong.
   for this project.
 - @rdelfin: ~~he missed a comma once and broke the entire website for a month~~
   has helped me keep track of what's going on here.
+- @Chris857 for consistently finding and correcting location errors.
