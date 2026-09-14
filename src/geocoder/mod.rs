@@ -17,7 +17,9 @@ use serde_json::Value;
 use crate::{
     first_api::FirstApiClient,
     geocoder::types::GeocodeLocation,
-    geocoder::types::{GeocodeResponse, LocationDict, LocationOverride},
+    geocoder::types::{
+        GeocodeResponse, LocationDict, LocationOverride, LocationResolution, LocationSource,
+    },
     map_types::{EventData, HasLocation, TeamData},
     tba::types::{TbaEvent, TbaTeam},
 };
@@ -223,13 +225,14 @@ impl FrcGeocoder {
         }
     }
 
-    async fn geolocate_team(&self, team: &mut TeamData) {
+    async fn geolocate_team(&self, team: &mut TeamData) -> bool {
         let addr = make_team_address(&team.tba);
         let key = team.tba.key.clone();
         match addr {
             None => {
                 error!("Team {} has no address.", key);
                 team.clear_location();
+                false
             }
             Some(addr) => {
                 info!("Address for {}: {}", key, addr);
@@ -237,23 +240,26 @@ impl FrcGeocoder {
                     Some(loc) => {
                         team.set_lat_lng(loc.lat, loc.lng);
                         info!("Location: ({}, {})", loc.lat, loc.lng);
+                        true
                     }
                     None => {
                         error!("Could not geocode address for team {}", key);
                         team.clear_location();
+                        false
                     }
                 }
             }
         }
     }
 
-    async fn geolocate_event(&self, event: &mut EventData) {
+    async fn geolocate_event(&self, event: &mut EventData) -> bool {
         let addr = make_event_address(&event.tba);
         let key = event.tba.key.clone();
         match addr {
             None => {
                 error!("Event {} has no address.", key);
                 event.clear_location();
+                false
             }
             Some(addr) => {
                 info!("Address for {}: {}", key, addr);
@@ -261,10 +267,12 @@ impl FrcGeocoder {
                     Some(loc) => {
                         event.set_lat_lng(loc.lat, loc.lng);
                         info!("Location: ({}, {})", loc.lat, loc.lng);
+                        true
                     }
                     None => {
                         error!("Could not geocode address for event {}", key);
                         event.clear_location();
+                        false
                     }
                 }
             }
@@ -273,7 +281,10 @@ impl FrcGeocoder {
 
     // ── Location deduplication ─────────────────────────────────
 
-    fn dedup_locations<T: HasLocation>(objects: &mut HashMap<String, T>, obj_type: &str) {
+    fn dedup_locations<T: HasLocation>(
+        objects: &mut HashMap<String, T>,
+        obj_type: &str,
+    ) -> Vec<String> {
         let mut seen: HashMap<(u64, u64), String> = HashMap::new();
         let mut to_jitter: Vec<String> = Vec::new();
 
@@ -298,62 +309,91 @@ impl FrcGeocoder {
 
         // Second pass: apply jitter.
         let mut rng = rand::rng();
-        for key in to_jitter {
-            if let Some(obj) = objects.get_mut(&key) {
+        for key in &to_jitter {
+            if let Some(obj) = objects.get_mut(key) {
                 jitter_location(obj, &mut rng);
             }
         }
+        to_jitter
     }
 
     // ── Public API ─────────────────────────────────────────────
 
-    pub async fn populate_team_locations(&self, teams: &mut HashMap<String, TeamData>, year: u32) {
+    pub async fn populate_team_locations(
+        &self,
+        teams: &mut HashMap<String, TeamData>,
+        year: u32,
+    ) -> HashMap<String, LocationResolution> {
         info!("Geolocating teams.");
 
         let keys: Vec<String> = teams.keys().cloned().collect();
+        let mut resolutions = HashMap::new();
         for key in &keys {
             let team = teams.get_mut(key).unwrap();
 
             // Priority 1: manual override
-            if let Some(ov) = self.team_overrides.get(key.as_str()) {
+            let source = if let Some(ov) = self.team_overrides.get(key.as_str()) {
                 apply_override(team, ov);
+                LocationSource::ManualOverride
             }
             // Priority 2: archive
             else if let Some(ov) = self.team_archive.get(key.as_str()) {
                 apply_override(team, ov);
+                LocationSource::Archive
             }
             // Priority 3: geocode
             else {
                 warn!("Geocoding team {}", key);
-                self.geolocate_team(team).await;
-            }
+                if self.geolocate_team(team).await {
+                    LocationSource::GoogleGeocode
+                } else {
+                    LocationSource::GeocodeFailed
+                }
+            };
+            resolutions.insert(
+                key.clone(),
+                location_resolution(
+                    source,
+                    self.team_overrides.contains_key(key.as_str()),
+                    team,
+                    team.ignore == Some(true),
+                    false,
+                ),
+            );
         }
 
-        Self::dedup_locations(teams, "Team");
+        let randomized = Self::dedup_locations(teams, "Team");
+        update_final_locations(&mut resolutions, teams, &randomized);
         self.save_team_archive(teams, year);
         info!("Geolocating teams finished.");
+        resolutions
     }
 
     pub async fn populate_event_locations(
         &self,
         events: &mut HashMap<String, EventData>,
         year: u32,
-    ) {
+    ) -> HashMap<String, LocationResolution> {
         info!("Geolocating events.");
 
         let keys: Vec<String> = events.keys().cloned().collect();
+        let mut resolutions = HashMap::new();
         for key in &keys {
             let event = events.get_mut(key).unwrap();
+            let manual_override_applied = self.event_overrides.contains_key(key.as_str());
+            let mut source = event.has_location().then_some(LocationSource::TbaProvided);
 
             // Priority 1: manual override
             if let Some(ov) = self.event_overrides.get(key.as_str()) {
                 apply_override(event, ov);
+                source = Some(LocationSource::ManualOverride);
             }
 
             if !event.has_location() {
                 // Try archive
                 if let Some(ov) = self.event_archive.get(key.as_str()) {
                     apply_override(event, ov);
+                    source = Some(LocationSource::Archive);
                 }
                 // Otherwise, if official, enhance + geocode
                 else if event.is_official {
@@ -373,9 +413,14 @@ impl FrcGeocoder {
                         event.tba.venue = venue;
                         event.tba.address = address;
                     }
-                    self.geolocate_event(event).await;
+                    source = Some(if self.geolocate_event(event).await {
+                        LocationSource::GoogleGeocode
+                    } else {
+                        LocationSource::GeocodeFailed
+                    });
                 } else {
                     error!("Event {} is not official and could not be geocoded!", key);
+                    source = Some(LocationSource::NonOfficialEvent);
                 }
             }
 
@@ -384,11 +429,23 @@ impl FrcGeocoder {
                 event.ignore = Some(true);
                 error!("Event {} has no location!", key);
             }
+            resolutions.insert(
+                key.clone(),
+                location_resolution(
+                    source.unwrap_or(LocationSource::ManualOverride),
+                    manual_override_applied,
+                    event,
+                    event.ignore == Some(true),
+                    false,
+                ),
+            );
         }
 
         self.save_event_archive(events);
-        Self::dedup_locations(events, "Event");
+        let randomized = Self::dedup_locations(events, "Event");
+        update_final_locations(&mut resolutions, events, &randomized);
         info!("Geolocating events finished.");
+        resolutions
     }
 }
 
@@ -400,6 +457,37 @@ fn apply_override<T: HasLocation>(obj: &mut T, ov: &LocationOverride) {
     }
     if let Some(ignore) = ov.ignore {
         obj.set_ignore(ignore);
+    }
+}
+
+fn location_resolution<T: HasLocation>(
+    source: LocationSource,
+    manual_override_applied: bool,
+    obj: &T,
+    ignored: bool,
+    randomized_to_avoid_collision: bool,
+) -> LocationResolution {
+    LocationResolution {
+        source,
+        manual_override_applied,
+        latitude: obj.lat(),
+        longitude: obj.lng(),
+        ignored,
+        randomized_to_avoid_collision,
+    }
+}
+
+fn update_final_locations<T: HasLocation>(
+    resolutions: &mut HashMap<String, LocationResolution>,
+    objects: &HashMap<String, T>,
+    randomized: &[String],
+) {
+    for (key, resolution) in resolutions.iter_mut() {
+        if let Some(obj) = objects.get(key) {
+            resolution.latitude = obj.lat();
+            resolution.longitude = obj.lng();
+        }
+        resolution.randomized_to_avoid_collision = randomized.contains(key);
     }
 }
 

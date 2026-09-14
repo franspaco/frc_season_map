@@ -4,6 +4,7 @@ mod frcmap;
 mod geocoder;
 mod http_client;
 mod map_types;
+mod report;
 mod tba;
 
 use std::path::Path;
@@ -65,7 +66,7 @@ async fn main() -> Result<()> {
     );
 
     map.generate().await?;
-    map.write(&cli.output)?;
+    map.write(&cli.output, &cli.report)?;
 
     info!("Done!");
     Ok(())

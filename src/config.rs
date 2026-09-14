@@ -44,6 +44,10 @@ pub struct Cli {
     #[arg(short = 'o', long = "output-location", default_value = "docs/data")]
     pub output: PathBuf,
 
+    /// Directory to write the HTML generation report to
+    #[arg(long = "report-location", default_value = "docs/generation")]
+    pub report: PathBuf,
+
     /// Directory to write debug output to
     #[arg(short = 'd', long = "debug-path", default_value = "debug")]
     pub debug_path: PathBuf,

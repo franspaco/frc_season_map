@@ -48,7 +48,7 @@ impl TbaClient {
     }
 
     /// Returns true if an event key matches the standard pattern (e.g. `2025cafr`).
-    fn is_regular_event_key(key: &str) -> bool {
+    pub fn is_regular_event_key(key: &str) -> bool {
         lazy_static_regex().is_match(key)
     }
 
@@ -75,14 +75,12 @@ impl TbaClient {
     // ── Events ─────────────────────────────────────────────────────
 
     /// Get all events for a year, filtering to regular event keys.
-    pub async fn get_events(&self, year: u32) -> AnyhowResult<HashMap<String, TbaEvent>> {
+    pub async fn get_all_events(&self, year: u32) -> AnyhowResult<HashMap<String, TbaEvent>> {
         let all: Vec<TbaEvent> = self.get(&format!("events/{}", year)).await?;
-        let events: HashMap<String, TbaEvent> = all
+        Ok(all
             .into_iter()
-            .filter(|e| Self::is_regular_event_key(&e.key))
-            .map(|e| (e.key.clone(), e))
-            .collect();
-        Ok(events)
+            .map(|event| (event.key.clone(), event))
+            .collect())
     }
 
     /// Get event keys for a year (regular only).
