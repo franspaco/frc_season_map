@@ -2,13 +2,13 @@ name: JSON Validation
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ main ]
     paths:
       - '**.json'
       - 'validate_json.py'
       - '.github/workflows/json-validation.yml'
   pull_request:
-    branches: [ master, main ]
+    branches: [ main ]
     paths:
       - '**.json'
       - 'validate_json.py'
