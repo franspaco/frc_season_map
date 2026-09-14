@@ -50,7 +50,7 @@ async fn main() -> Result<()> {
     };
 
     // Build shared HTTP client with persistent cache
-    let client = http_client::build_cached_client(&cli.cache)?;
+    let (client, http_metrics) = http_client::build_cached_client(&cli.cache)?;
 
     // Create main object
     let mut map = FrcMap::new(
@@ -67,6 +67,7 @@ async fn main() -> Result<()> {
 
     map.generate().await?;
     map.write(&cli.output, &cli.report)?;
+    http_metrics.log_summary();
 
     info!("Done!");
     Ok(())

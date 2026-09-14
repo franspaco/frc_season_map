@@ -432,10 +432,12 @@ name = "frc_season_map"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "async-trait",
  "base64 0.22.1",
  "chrono",
  "clap",
  "env_logger",
+ "http",
  "http-cache-reqwest",
  "log",
  "rand",
