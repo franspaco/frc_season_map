@@ -162,7 +162,7 @@ fn render_html(year: u32, report_json: &str) -> String {
     const filter = document.getElementById('filter');
     const text = value => value == null ? '—' : String(value);
     const node = (tag, value) => {{ const element = document.createElement(tag); element.textContent = text(value); return element; }};
-    const location = value => !value ? 'not processed' : `${{value.source}}; ${{value.latitude ?? '—'}}, ${{value.longitude ?? '—'}}${{value.ignored ? '; ignored' : ''}}${{value.randomized_to_avoid_collision ? '; randomized to avoid collision' : ''}}`;
+    const formatLocationResolution = value => !value ? 'not processed' : `${{value.source}}; ${{value.latitude ?? '—'}}, ${{value.longitude ?? '—'}}${{value.ignored ? '; ignored' : ''}}${{value.randomized_to_avoid_collision ? '; randomized to avoid collision' : ''}}`;
     const jsonDetails = (label, value) => {{
       const details = document.createElement('details');
       details.append(node('summary', label));
@@ -198,14 +198,14 @@ fn render_html(year: u32, report_json: &str) -> String {
       node('span', `${{team.key}} — ${{team.raw.nickname ?? team.raw.name ?? 'unnamed'}}`),
       node('span', team.active ? 'yes' : 'no'),
       node('span', team.included_in_map ? 'included' : 'excluded'),
-      node('span', location(team.location)),
+      node('span', formatLocationResolution(team.location)),
       node('span', team.event_keys.join(', ') || 'none'),
       jsonDetails('Show raw TBA and final map record', {{raw: team.raw, map: team.map_record}})
     ]);
     renderTable('events', report.events, event => [
       node('span', `${{event.key}} — ${{event.raw.name ?? 'unnamed'}}`),
       node('span', event.included_in_map ? 'included' : 'excluded (non-regular event key)'),
-      node('span', location(event.location)),
+      node('span', formatLocationResolution(event.location)),
       node('span', event.team_keys.join(', ') || 'not requested'),
       jsonDetails('Show raw TBA and final map record', {{raw: event.raw, map: event.map_record}})
     ]);
@@ -237,6 +237,8 @@ mod tests {
         assert!(content.contains("FRC Season Map Generation Report: 2026"));
         assert!(content.contains("\\u003c/script\\u003e"));
         assert!(!content.contains("</script><script>unsafe()"));
+        assert!(content.contains("const formatLocationResolution"));
+        assert!(!content.contains("const location ="));
 
         fs::remove_dir_all(directory).unwrap();
     }
