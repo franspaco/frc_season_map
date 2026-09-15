@@ -188,7 +188,7 @@ APP.init = async function () {
     }
 
     let locations_frcmap = await $.getJSON(
-        "https://raw.githubusercontent.com/franspaco/frc_season_map/refs/heads/master/locations/teams.json"
+        "https://raw.githubusercontent.com/franspaco/frc_season_map/refs/heads/main/locations/teams.json"
     );
 
     for (const key in locations_frcmap) {
