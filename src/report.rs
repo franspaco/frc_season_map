@@ -36,6 +36,8 @@ struct ReportTeam {
 struct ReportEvent {
     key: String,
     raw: TbaEvent,
+    official: bool,
+    exclusion_reason: Option<&'static str>,
     included_in_map: bool,
     location: Option<LocationResolution>,
     team_keys: Vec<String>,
@@ -73,6 +75,9 @@ pub fn build_generation_report(
     let mut events: Vec<ReportEvent> = raw_events
         .iter()
         .map(|(key, raw)| {
+            let official = raw
+                .event_type
+                .is_some_and(|event_type| event_type.is_official());
             let map_record = map_events.get(key).cloned();
             let team_keys = map_record
                 .as_ref()
@@ -81,6 +86,8 @@ pub fn build_generation_report(
             ReportEvent {
                 key: key.clone(),
                 raw: raw.clone(),
+                official,
+                exclusion_reason: (!official).then_some("non-official event"),
                 included_in_map: map_record.is_some(),
                 location: event_locations.get(key).cloned(),
                 team_keys,

@@ -94,14 +94,32 @@ impl FrcMap {
         info!("Found {} events.", raw_events.len());
         let mut events: HashMap<String, EventData> = raw_events
             .iter()
-            .filter(|(key, _)| TbaClient::is_regular_event_key(key))
             .map(|(key, event)| (key.clone(), EventData::new(event.clone())))
+            .filter(|(_, event)| event.is_official)
             .collect();
-        info!("Using {} regular events in the map.", events.len());
+        info!("Using {} official events in the map.", events.len());
 
-        // 3. Fetch active teams
+        // 3. Fetch official event rosters and derive active teams from them.
         info!("Fetching active teams in {}...", self.year);
-        let active = self.tba.get_active_teams(self.year).await?;
+        let mut team_events: HashMap<String, Vec<String>> = HashMap::new();
+        for (event_key, event) in events.iter_mut() {
+            match self.tba.get_event_team_keys(event_key).await {
+                Ok(team_keys) => {
+                    for team_key in &team_keys {
+                        team_events
+                            .entry(team_key.clone())
+                            .or_default()
+                            .push(event_key.clone());
+                    }
+                    event.teams = team_keys;
+                }
+                Err(e) => {
+                    error!("Failed to fetch teams for event {}: {}", event_key, e);
+                }
+            }
+        }
+        let mut active: Vec<String> = team_events.keys().cloned().collect();
+        active.sort();
         info!("Found {} active teams.", active.len());
         self.debug_dump("active_teams", &active);
 
@@ -119,8 +137,7 @@ impl FrcMap {
             .await;
         self.debug_dump("events_geocoded", &events);
 
-        // 6. Get team→events mapping
-        let team_events = self.tba.get_team_events(self.year).await?;
+        // 6. The roster responses above provide the team→official-event mapping.
         self.debug_dump("team_events", &team_events);
 
         // 7. Build active-team data with their events list
@@ -134,18 +151,6 @@ impl FrcMap {
                 }
                 None => {
                     error!("Failed to find key '{}' in team list.", tkey);
-                }
-            }
-        }
-
-        // 8. Add team lists to each event
-        for (ekey, event) in events.iter_mut() {
-            match self.tba.get_event_team_keys(ekey).await {
-                Ok(team_keys) => {
-                    event.teams = team_keys;
-                }
-                Err(e) => {
-                    error!("Failed to fetch teams for event {}: {}", ekey, e);
                 }
             }
         }

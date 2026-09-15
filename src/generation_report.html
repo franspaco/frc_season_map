@@ -13,6 +13,11 @@
     th {{ position: sticky; top: 0; background: Canvas; }}
     .summary {{ display: flex; flex-wrap: wrap; gap: 1rem; }}
     .summary p {{ border: 1px solid #8886; border-radius: .4rem; margin: 0; padding: .75rem; }}
+    .status {{ border-radius: .25rem; display: inline-block; font-weight: 600; padding: .15rem .35rem; }}
+    .included {{ background: #198754; color: white; }}
+    .excluded {{ background: #b7791f; color: white; }}
+    .missing {{ background: #c53030; color: white; }}
+    .resolved {{ background: #0d6efd; color: white; }}
     pre {{ margin: .5rem 0 0; max-width: 70rem; overflow: auto; white-space: pre-wrap; }}
     details {{ min-width: 18rem; }} .hidden {{ display: none; }}
   </style>
@@ -34,6 +39,11 @@
     const text = value => value == null ? '—' : String(value);
     const node = (tag, value) => {{ const element = document.createElement(tag); element.textContent = text(value); return element; }};
     const formatLocationResolution = value => !value ? 'not processed' : `${{value.source}}; ${{value.latitude ?? '—'}}, ${{value.longitude ?? '—'}}${{value.ignored ? '; ignored' : ''}}${{value.randomized_to_avoid_collision ? '; randomized to avoid collision' : ''}}`;
+    const status = (value, className) => {{ const element = node('span', value); element.className = `status ${{className}}`; return element; }};
+    const locationStatus = value => {{
+      const missing = !value || value.latitude == null || value.longitude == null;
+      return status(formatLocationResolution(value), missing ? 'missing' : 'resolved');
+    }};
     const jsonDetails = (label, value) => {{
       const details = document.createElement('details');
       details.append(node('summary', label));
@@ -67,16 +77,16 @@
     );
     renderTable('teams', report.teams, team => [
       node('span', `${{team.key}} — ${{team.raw.nickname ?? team.raw.name ?? 'unnamed'}}`),
-      node('span', team.active ? 'yes' : 'no'),
-      node('span', team.included_in_map ? 'included' : 'excluded'),
-      node('span', formatLocationResolution(team.location)),
+      status(team.active ? 'yes' : 'no', team.active ? 'included' : 'excluded'),
+      status(team.included_in_map ? 'included' : 'excluded (no official event)', team.included_in_map ? 'included' : 'excluded'),
+      locationStatus(team.location),
       node('span', team.event_keys.join(', ') || 'none'),
       jsonDetails('Show raw TBA and final map record', {{raw: team.raw, map: team.map_record}})
     ]);
     renderTable('events', report.events, event => [
       node('span', `${{event.key}} — ${{event.raw.name ?? 'unnamed'}}`),
-      node('span', event.included_in_map ? 'included' : 'excluded (non-regular event key)'),
-      node('span', formatLocationResolution(event.location)),
+      status(event.included_in_map ? 'included' : `excluded (${{event.exclusion_reason}})`, event.included_in_map ? 'included' : 'excluded'),
+      locationStatus(event.location),
       node('span', event.team_keys.join(', ') || 'not requested'),
       jsonDetails('Show raw TBA and final map record', {{raw: event.raw, map: event.map_record}})
     ]);
