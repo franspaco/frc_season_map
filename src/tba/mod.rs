@@ -1,10 +1,7 @@
 pub mod event_type;
 pub mod types;
 
-use std::{
-    collections::{HashMap, HashSet},
-    sync::Arc,
-};
+use std::{collections::HashMap, sync::Arc};
 
 use anyhow::{Context, Result as AnyhowResult};
 use log::{info, warn};
@@ -83,15 +80,6 @@ impl TbaClient {
             .collect())
     }
 
-    /// Get event keys for a year (regular only).
-    pub async fn get_event_keys(&self, year: u32) -> AnyhowResult<Vec<String>> {
-        let all: Vec<String> = self.get(&format!("events/{}/keys", year)).await?;
-        Ok(all
-            .into_iter()
-            .filter(|k| Self::is_regular_event_key(k))
-            .collect())
-    }
-
     /// Get team keys for a single event.
     pub async fn get_event_team_keys(&self, event_key: &str) -> AnyhowResult<Vec<String>> {
         let keys: Vec<String> = self.get(&format!("event/{}/teams/keys", event_key)).await?;
@@ -101,46 +89,6 @@ impl TbaClient {
             }
         }
         Ok(keys)
-    }
-
-    // ── Derived helpers (mirrors Python logic) ────────────────────
-
-    /// Get the set of active team keys (teams that competed in at least one event).
-    pub async fn get_active_teams(&self, year: u32) -> AnyhowResult<Vec<String>> {
-        let events = self.get_event_keys(year).await?;
-        let mut teams = HashSet::new();
-        for event in &events {
-            match self.get_event_team_keys(event).await {
-                Ok(keys) => {
-                    teams.extend(keys);
-                }
-                Err(e) => {
-                    warn!("Failed to fetch teams for event {}: {}", event, e);
-                }
-            }
-        }
-        let mut sorted: Vec<String> = teams.into_iter().collect();
-        sorted.sort();
-        Ok(sorted)
-    }
-
-    /// Get a map of team_key → list of event_keys they attend.
-    pub async fn get_team_events(&self, year: u32) -> AnyhowResult<HashMap<String, Vec<String>>> {
-        let events = self.get_event_keys(year).await?;
-        let mut map: HashMap<String, Vec<String>> = HashMap::new();
-        for event in &events {
-            match self.get_event_team_keys(event).await {
-                Ok(team_keys) => {
-                    for tk in team_keys {
-                        map.entry(tk).or_default().push(event.clone());
-                    }
-                }
-                Err(e) => {
-                    warn!("Failed to fetch teams for event {}: {}", event, e);
-                }
-            }
-        }
-        Ok(map)
     }
 }
 

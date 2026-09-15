@@ -9,7 +9,7 @@ use crate::tba::event_type::EventType;
 /// `#[serde(default)]` on every optional field + `flatten` for extras means
 /// the struct will never fail to deserialize even if TBA adds new fields.
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
+#[serde(rename_all = "snake_case")]
 pub struct TbaTeam {
     pub key: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -54,7 +54,7 @@ pub struct TbaTeam {
 
 /// Webcast sub-object inside Event.
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
+#[serde(rename_all = "snake_case")]
 pub struct Webcast {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub channel: Option<String>,
@@ -66,7 +66,7 @@ pub struct Webcast {
 
 /// TBA Event object — fields used by the map frontend.
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
+#[serde(rename_all = "snake_case")]
 pub struct TbaEvent {
     pub key: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
