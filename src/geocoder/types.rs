@@ -21,6 +21,29 @@ pub struct LocationOverride {
 /// Type alias matching the Python `LocationDict = Dict[str, Dict[str, float]]`.
 pub type LocationDict = HashMap<String, LocationOverride>;
 
+/// The final source used to resolve an object's location during a generation.
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LocationSource {
+    TbaProvided,
+    ManualOverride,
+    Archive,
+    GoogleGeocode,
+    GeocodeFailed,
+    NonOfficialEvent,
+}
+
+/// Report-only metadata explaining how an object's final location was chosen.
+#[derive(Debug, Clone, Serialize)]
+pub struct LocationResolution {
+    pub source: LocationSource,
+    pub manual_override_applied: bool,
+    pub latitude: Option<f64>,
+    pub longitude: Option<f64>,
+    pub ignored: bool,
+    pub randomized_to_avoid_collision: bool,
+}
+
 // ── Google Maps Geocoding API response types ───────────────────
 
 #[derive(Debug, Deserialize)]

@@ -4,6 +4,7 @@ mod frcmap;
 mod geocoder;
 mod http_client;
 mod map_types;
+mod report;
 mod tba;
 
 use std::path::Path;
@@ -49,7 +50,7 @@ async fn main() -> Result<()> {
     };
 
     // Build shared HTTP client with persistent cache
-    let client = http_client::build_cached_client(&cli.cache)?;
+    let (client, http_metrics) = http_client::build_cached_client(&cli.cache)?;
 
     // Create main object
     let mut map = FrcMap::new(
@@ -65,7 +66,8 @@ async fn main() -> Result<()> {
     );
 
     map.generate().await?;
-    map.write(&cli.output)?;
+    map.write(&cli.output, &cli.report)?;
+    http_metrics.log_summary();
 
     info!("Done!");
     Ok(())

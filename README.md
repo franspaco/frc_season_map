@@ -80,7 +80,8 @@ This will:
 3. Fetch data for all events.
 4. Filter teams, leaving only those registered for events in the current year.
 5. Cross reference teams and events.
-6. Export `docs/data/season_<year>.json`
+6. Export `docs/data/season_<year>.json` and the generation diagnostics report
+   at `docs/generation/<year>.html`
 
 To explore other options, run:
 

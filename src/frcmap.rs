@@ -13,6 +13,7 @@ use crate::{
     first_api::FirstApiClient,
     geocoder::{FrcGeocoder, types::LocationDict},
     map_types::{EventData, TeamData},
+    report,
     tba::TbaClient,
 };
 
@@ -21,6 +22,7 @@ pub struct FrcMap {
     tba: TbaClient,
     geocoder: FrcGeocoder,
     data: Option<Value>,
+    report: Option<Value>,
     debug_path: PathBuf,
 }
 
@@ -55,6 +57,7 @@ impl FrcMap {
             tba,
             geocoder,
             data: None,
+            report: None,
             debug_path,
         }
     }
@@ -78,6 +81,7 @@ impl FrcMap {
         info!("Fetching all teams...");
         let raw_teams = self.tba.get_teams().await?;
         info!("Found {} teams.", raw_teams.len());
+        let report_teams = raw_teams.clone();
         let mut teams: HashMap<String, TeamData> = raw_teams
             .into_iter()
             .map(|(k, v)| (k, TeamData::new(v)))
@@ -86,12 +90,14 @@ impl FrcMap {
 
         // 2. Fetch all events for this year
         info!("Fetching all events in {}...", self.year);
-        let raw_events = self.tba.get_events(self.year).await?;
+        let raw_events = self.tba.get_all_events(self.year).await?;
         info!("Found {} events.", raw_events.len());
         let mut events: HashMap<String, EventData> = raw_events
-            .into_iter()
-            .map(|(k, v)| (k, EventData::new(v)))
+            .iter()
+            .filter(|(key, _)| TbaClient::is_regular_event_key(key))
+            .map(|(key, event)| (key.clone(), EventData::new(event.clone())))
             .collect();
+        info!("Using {} regular events in the map.", events.len());
 
         // 3. Fetch active teams
         info!("Fetching active teams in {}...", self.year);
@@ -100,13 +106,15 @@ impl FrcMap {
         self.debug_dump("active_teams", &active);
 
         // 4. Geocode team locations
-        self.geocoder
+        let team_locations = self
+            .geocoder
             .populate_team_locations(&mut teams, self.year)
             .await;
         self.debug_dump("teams_geocoded", &teams);
 
         // 5. Geocode event locations
-        self.geocoder
+        let event_locations = self
+            .geocoder
             .populate_event_locations(&mut events, self.year)
             .await;
         self.debug_dump("events_geocoded", &events);
@@ -142,6 +150,18 @@ impl FrcMap {
             }
         }
 
+        self.report = Some(report::build_generation_report(
+            self.year,
+            &report_teams,
+            &raw_events,
+            &active,
+            &team_events,
+            &team_data,
+            &events,
+            &team_locations,
+            &event_locations,
+        )?);
+
         self.data = Some(json!({
             "teams": team_data,
             "events": events,
@@ -151,7 +171,7 @@ impl FrcMap {
     }
 
     /// Write the output JSON files (pretty + minified).
-    pub fn write(&self, output_dir: &Path) -> AnyhowResult<()> {
+    pub fn write(&self, output_dir: &Path, report_dir: &Path) -> AnyhowResult<()> {
         let data = self
             .data
             .as_ref()
@@ -171,6 +191,16 @@ impl FrcMap {
         std::fs::write(&compact_path, &compact)
             .with_context(|| format!("Failed to write {}", compact_path.display()))?;
         info!("Wrote {}", compact_path.display());
+
+        let report = self
+            .report
+            .as_ref()
+            .context("Generation report data is not available!")?;
+        report::write_generation_report(report_dir, self.year, report)?;
+        info!(
+            "Wrote {}",
+            report_dir.join(format!("{}.html", self.year)).display()
+        );
 
         Ok(())
     }
