@@ -24,6 +24,27 @@ let APP = {
     mobile: false,
 };
 
+APP.get_position = function (element) {
+    if (element == null || element.lat == null || element.lng == null) {
+        return null;
+    }
+
+    const lat = Number(element.lat);
+    const lng = Number(element.lng);
+    if (
+        !Number.isFinite(lat) ||
+        !Number.isFinite(lng) ||
+        lat < -90 ||
+        lat > 90 ||
+        lng < -180 ||
+        lng > 180
+    ) {
+        return null;
+    }
+
+    return { lat: lat, lng: lng };
+};
+
 async function initMap() {
     var center = {
         lat: 26.449372,
@@ -214,6 +235,11 @@ APP.init = async function () {
                 console.log(`Ignoring event: ${key}`);
                 continue;
             }
+            const position = APP.get_position(element);
+            if (position == null) {
+                console.warn(`Skipping event with invalid coordinates: ${key}`);
+                continue;
+            }
             let marker_icon = APP.markers.red;
             let title = `${element.name} (week ${element.week + 1})`;
 
@@ -223,10 +249,7 @@ APP.init = async function () {
             }
 
             var marker = new google.maps.Marker({
-                position: {
-                    lat: Number(element.lat),
-                    lng: Number(element.lng),
-                },
+                position: position,
                 icon: marker_icon,
                 map: this.map,
                 title: title,
@@ -253,6 +276,11 @@ APP.init = async function () {
                 console.log(`Ignoring team: ${key}`);
                 continue;
             }
+            const position = APP.get_position(element);
+            if (position == null) {
+                console.warn(`Skipping team with invalid coordinates: ${key}`);
+                continue;
+            }
 
             APP.team_autocomplete.push({
                 value: key,
@@ -261,10 +289,7 @@ APP.init = async function () {
             element.visible = false;
             element.edges = [];
             var marker = new google.maps.Marker({
-                position: {
-                    lat: Number(element.lat),
-                    lng: Number(element.lng),
-                },
+                position: position,
                 icon: APP.getMarker(element.rookie_year),
                 map: this.map,
                 title: `${element.nickname} (${element.team_number})`,
@@ -289,15 +314,18 @@ APP.init = async function () {
                 continue;
             }
             for (const event of element.events) {
+                const event_data = data.events[event];
+                const team_position = APP.get_position(element);
+                const event_position = APP.get_position(event_data);
+                if (team_position == null || event_position == null) {
+                    console.warn(
+                        `Skipping edge with invalid coordinates: ${key}-${event}`
+                    );
+                    continue;
+                }
                 var path = [
-                    {
-                        lat: Number(element.lat),
-                        lng: Number(element.lng),
-                    },
-                    {
-                        lat: Number(data.events[event].lat),
-                        lng: Number(data.events[event].lng),
-                    },
+                    team_position,
+                    event_position,
                 ];
                 var len = google.maps.geometry.spherical.computeLength(path);
                 var edge = new google.maps.Polyline({
@@ -316,7 +344,7 @@ APP.init = async function () {
                 edge.AddViewer = AddViewer;
                 edge.RemoveViewer = RemoveViewer;
                 // Add to event & team
-                data.events[event].edges.push(edge);
+                event_data.edges.push(edge);
                 element.edges.push(edge);
             }
         }
