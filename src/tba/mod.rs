@@ -5,7 +5,6 @@ use std::{collections::HashMap, sync::Arc};
 
 use anyhow::{Context, Result as AnyhowResult};
 use log::{info, warn};
-use regex::Regex;
 use reqwest_middleware::ClientWithMiddleware;
 use serde::de::DeserializeOwned;
 
@@ -42,11 +41,6 @@ impl TbaClient {
         resp.json::<T>()
             .await
             .with_context(|| format!("Failed to parse TBA response from {}", url))
-    }
-
-    /// Returns true if an event key matches the standard pattern (e.g. `2025cafr`).
-    pub fn is_regular_event_key(key: &str) -> bool {
-        lazy_static_regex().is_match(key)
     }
 
     // ── Teams ──────────────────────────────────────────────────────
@@ -90,10 +84,4 @@ impl TbaClient {
         }
         Ok(keys)
     }
-}
-
-fn lazy_static_regex() -> &'static Regex {
-    use std::sync::OnceLock;
-    static RE: OnceLock<Regex> = OnceLock::new();
-    RE.get_or_init(|| Regex::new(r"^20\d\d[a-z]+$").unwrap())
 }

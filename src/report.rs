@@ -36,7 +36,6 @@ struct ReportTeam {
 struct ReportEvent {
     key: String,
     raw: TbaEvent,
-    regular_event_key: bool,
     official: bool,
     exclusion_reason: Option<&'static str>,
     included_in_map: bool,
@@ -76,7 +75,6 @@ pub fn build_generation_report(
     let mut events: Vec<ReportEvent> = raw_events
         .iter()
         .map(|(key, raw)| {
-            let regular_event_key = crate::tba::TbaClient::is_regular_event_key(key);
             let official = raw
                 .event_type
                 .is_some_and(|event_type| event_type.is_official());
@@ -88,11 +86,8 @@ pub fn build_generation_report(
             ReportEvent {
                 key: key.clone(),
                 raw: raw.clone(),
-                regular_event_key,
                 official,
-                exclusion_reason: (!regular_event_key)
-                    .then_some("non-regular event key")
-                    .or_else(|| (!official).then_some("non-official event")),
+                exclusion_reason: (!official).then_some("non-official event"),
                 included_in_map: map_record.is_some(),
                 location: event_locations.get(key).cloned(),
                 team_keys,

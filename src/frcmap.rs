@@ -94,11 +94,10 @@ impl FrcMap {
         info!("Found {} events.", raw_events.len());
         let mut events: HashMap<String, EventData> = raw_events
             .iter()
-            .filter(|(key, _)| TbaClient::is_regular_event_key(key))
             .map(|(key, event)| (key.clone(), EventData::new(event.clone())))
             .filter(|(_, event)| event.is_official)
             .collect();
-        info!("Using {} regular official events in the map.", events.len());
+        info!("Using {} official events in the map.", events.len());
 
         // 3. Fetch official event rosters and derive active teams from them.
         info!("Fetching active teams in {}...", self.year);
